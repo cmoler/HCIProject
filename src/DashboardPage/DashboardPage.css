@@ -1,0 +1,54 @@
+.dash-title {
+    text-align: center;
+}
+
+.chart-tabs {
+    position: absolute;
+    top: 0;
+    left: 30vw;
+    border: 1px solid green;
+}
+
+.chart {
+    position: absolute;
+    top: 6vh;
+    left: 20vw;
+    width: 50vw;
+    height: 70vh;
+    border: 1px solid green;
+}
+
+.chart-radio {
+    position: absolute;
+    top: 15vh;
+    left: 4.4vw;
+    border: 1px solid green;
+}
+
+.chart-group {
+    position: relative;
+    border: 1px solid lawngreen;
+    top: 1vh;
+    height: 85vh;
+    max-height: 85vh;
+    width: 70vw;
+    max-width: 70vw;
+}
+
+.feedback {
+    position: absolute;
+    border: 1px solid green;
+    left: 72vw;
+    top: 50vh;
+    max-height: 25vh;
+    max-width: 25vw;
+}
+
+.bio {
+    position: absolute;
+    border: 1px solid green;
+    left: 72vw;
+    top: 20vh;
+    max-height: 25vh;
+    max-width: 25vw;
+}

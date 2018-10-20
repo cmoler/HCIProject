@@ -1,0 +1,28 @@
+.modal{ display:block; }
+
+.modal-container {
+    position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+    position: absolute;
+}
+
+.course-modal {
+    width: 90vw;    /* Occupy the 90% of the screen width */
+    max-width: 90vw;
+    top: 20vh;
+}
+
+.first-column {
+    width: 50%;
+    height: 30vh;
+    max-height: 30vh;
+    float: left;
+}
+
+.second-column {
+    width: 50%;
+    height: 30vh;
+    max-height: 30vh;
+    float: right;
+}
