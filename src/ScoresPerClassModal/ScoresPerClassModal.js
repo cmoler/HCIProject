@@ -51,7 +51,7 @@ export class ScoresPerClassModal extends React.Component {
                         <Chart
                             chartType="ColumnChart"
                             width="100%"
-                            height="40%"
+                            height="100%"
                             data={thisClassData}
                             options={thisClassOptions}
                         />
@@ -60,7 +60,7 @@ export class ScoresPerClassModal extends React.Component {
                         <Chart
                             chartType="ColumnChart"
                             width="100%"
-                            height="40%"
+                            height="100%"
                             data={overallClassData}
                             options={overallClassOptions}
                         />
