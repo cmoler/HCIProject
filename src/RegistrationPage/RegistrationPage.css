@@ -6,3 +6,7 @@
 .modal-container .modal, .modal-container .modal-backdrop {
     position: absolute;
 }
+
+.table-bullshit{
+    overflow: auto;
+}
