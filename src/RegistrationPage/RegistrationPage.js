@@ -40,61 +40,57 @@ export class RegistrationPage extends Component {
                     <Tabs defaultActiveKey={0} id="filter-tabs" className = "tabClass">
                         <Tab eventKey={0} title="Filters">
                             <div className="filter-options">
-                                <div class = "dropdown">
-                                    <button class="dropbtn">Program</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">Campus</a>
-                                        <a href="#">Online</a>
-                                        <a href="#">Innovation Academy</a>
-                                    </div>
-                                </div>
-                                <div class = "dropdown">
-                                    <button class="dropbtn">Program Level</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">Undergraduate</a>
-                                        <a href="#">Graduate</a>
-                                    </div>
-                                </div>
-                                Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
-                                Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
-                                Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
+                                <ButtonToolbar>
+                                    <DropdownButton title="Program level" id="program-level-dropdown">
+                                        <MenuItem eventKey="1">Undergraduate</MenuItem>
+                                        <MenuItem eventKey="2">Graduate</MenuItem>
+                                    </DropdownButton>
+                                    Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
+                                    Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
+                                </ButtonToolbar>
+                                <ButtonToolbar justified>
+                                    <DropdownButton title="Program" id="program-dropdown">
+                                        <MenuItem eventKey="1">Campus</MenuItem>
+                                        <MenuItem eventKey="2">Online</MenuItem>
+                                        <MenuItem eventKey="3">Innovation Academy</MenuItem>
+                                    </DropdownButton>
+                                    <DropdownButton title="Department" id="department-dropdown">
+                                        <MenuItem eventKey="1">Computer & Information Science & Engineering</MenuItem>
+                                        <MenuItem eventKey="2">Electrical Engineering</MenuItem>
+                                    </DropdownButton>
+                                    Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
+                                </ButtonToolbar>
                             </div>
                         </Tab>
                         <Tab eventKey={1} title="Course Filter">
                             Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
                             Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
                             Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
-                            <div class = "dropdown">
-                                    <button class="dropbtn">Level Minimum</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">1000</a>
-                                        <a href="#">2000</a>
-                                        <a href="#">3000</a>
-                                        <a href="#">4000</a>
-                                        <a href="#">5000</a>
-                                        <a href="#">6000</a>
-                                        <a href="#">7000</a>
-                                        <a href="#">8000</a>
-                                    </div>
-                            </div>
-                            <div class = "dropdown">
-                                    <button class="dropbtn">Level Maximum</button>
-                                    <div class="dropdown-content">
-                                        <a href="#">1999</a>
-                                        <a href="#">2999</a>
-                                        <a href="#">3999</a>
-                                        <a href="#">4999</a>
-                                        <a href="#">5999</a>
-                                        <a href="#">6999</a>
-                                        <a href="#">7999</a>
-                                        <a href="#">8999</a>
-                                    </div>
-                            </div>
+                            <DropdownButton title="Level Minimum" id="level-min-dropdown">
+                                    <MenuItem eventKey="1">1000</MenuItem>
+                                    <MenuItem eventKey="2">2000</MenuItem>
+                                    <MenuItem eventKey="3">3000</MenuItem>
+                                    <MenuItem eventKey="4">4000</MenuItem>
+                                    <MenuItem eventKey="5">5000</MenuItem>
+                                    <MenuItem eventKey="6">6000</MenuItem>
+                                    <MenuItem eventKey="7">7000</MenuItem>
+                                    <MenuItem eventKey="8">8000</MenuItem>
+                            </DropdownButton>
+                            <DropdownButton title="Level Maximum" id="level-max-dropdown">
+                                    <MenuItem eventKey="1">1999</MenuItem>
+                                    <MenuItem eventKey="2">2999</MenuItem>
+                                    <MenuItem eventKey="3">3999</MenuItem>
+                                    <MenuItem eventKey="4">4999</MenuItem>
+                                    <MenuItem eventKey="5">5999</MenuItem>
+                                    <MenuItem eventKey="6">6999</MenuItem>
+                                    <MenuItem eventKey="7">7999</MenuItem>
+                                    <MenuItem eventKey="8">8999</MenuItem>
+                            </DropdownButton>
                             Instructor: <input name="Instructor" type="text" placeholder = "Instructor Last Name" id="instructor"/>
                             Credits: <input name="Credits" type="text" placeholder = "# of Credits" id="credits"/>
                         </Tab>
                         <Tab eventKey={2} title="Class Meeting">
-                            
+
                         </Tab>
                         <Tab eventKey={3} title="Course Properties">
                         </Tab>
