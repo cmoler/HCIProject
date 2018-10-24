@@ -37,12 +37,64 @@ export class RegistrationPage extends Component {
         return (
             <div>
                 <div className="filters">
-                    <Tabs defaultActiveKey={0} id="filter-tabs">
+                    <Tabs defaultActiveKey={0} id="filter-tabs" className = "tabClass">
                         <Tab eventKey={0} title="Filters">
+                            <div className="filter-options">
+                                <div class = "dropdown">
+                                    <button class="dropbtn">Program</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">Campus</a>
+                                        <a href="#">Online</a>
+                                        <a href="#">Innovation Academy</a>
+                                    </div>
+                                </div>
+                                <div class = "dropdown">
+                                    <button class="dropbtn">Program Level</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">Undergraduate</a>
+                                        <a href="#">Graduate</a>
+                                    </div>
+                                </div>
+                                Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
+                                Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
+                                Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
+                            </div>
                         </Tab>
                         <Tab eventKey={1} title="Course Filter">
+                            Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
+                            Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
+                            Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
+                            <div class = "dropdown">
+                                    <button class="dropbtn">Level Minimum</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">1000</a>
+                                        <a href="#">2000</a>
+                                        <a href="#">3000</a>
+                                        <a href="#">4000</a>
+                                        <a href="#">5000</a>
+                                        <a href="#">6000</a>
+                                        <a href="#">7000</a>
+                                        <a href="#">8000</a>
+                                    </div>
+                            </div>
+                            <div class = "dropdown">
+                                    <button class="dropbtn">Level Maximum</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">1999</a>
+                                        <a href="#">2999</a>
+                                        <a href="#">3999</a>
+                                        <a href="#">4999</a>
+                                        <a href="#">5999</a>
+                                        <a href="#">6999</a>
+                                        <a href="#">7999</a>
+                                        <a href="#">8999</a>
+                                    </div>
+                            </div>
+                            Instructor: <input name="Instructor" type="text" placeholder = "Instructor Last Name" id="instructor"/>
+                            Credits: <input name="Credits" type="text" placeholder = "# of Credits" id="credits"/>
                         </Tab>
-                        <Tab eventKey={2} title="Meeting Time">
+                        <Tab eventKey={2} title="Class Meeting">
+                            
                         </Tab>
                         <Tab eventKey={3} title="Course Properties">
                         </Tab>
@@ -50,9 +102,9 @@ export class RegistrationPage extends Component {
                 </div>
 
                 <div className="unmet-requirements">
-                    <h4>Unmet Requirements</h4>
+                    <h3>Unmet Requirements</h3>
                     <ButtonToolbar>
-                        <ButtonGroup vertical>
+                        <ButtonGroup vertical className = "courseDescriptors">
                             <DropdownButton
                                 title="Interdisciplinary Electives"
                                 id="dropdown-1"
