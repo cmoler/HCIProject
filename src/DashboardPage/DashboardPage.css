@@ -1,5 +1,40 @@
-.dash-title {
-    text-align: center;
+.header-group {
+    position: relative;
+    top: 0;
+    border: 1px solid orange;
+}
+
+.header-top {
+    position: relative;
+    top: 0;
+    bottom: 10px;
+    background-color: #285797;
+    border: 1px solid blue;
+}
+
+.header-bottom {
+    position: relative;
+    height: 8px;
+    background-color: #ee7c00;
+}
+
+.title-bar {
+    position: relative;
+    border: 1px solid green;
+}
+
+.header {
+    position: relative;
+    top: 0;
+    left: 10px;
+    font-size: 18px;
+}
+
+.header-title {
+    position: relative;
+    text-align: left;
+    color: white;
+    font-family: Roboto,Arial,sans-serif;
 }
 
 .chart-tabs {
@@ -49,7 +84,11 @@
     position: absolute;
     border: 1px solid green;
     left: 72vw;
-    top: 20vh;
+    top: 30vh;
     max-height: 25vh;
     max-width: 25vw;
+}
+
+.master_page {
+    background-color: rgb(246, 244, 237);
 }
