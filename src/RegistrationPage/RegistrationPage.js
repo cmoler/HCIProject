@@ -56,19 +56,20 @@ export class RegistrationPage extends Component {
                                         <MenuItem eventKey="1">Undergraduate</MenuItem>
                                         <MenuItem eventKey="2">Graduate</MenuItem>
                                     </DropdownButton>
-                                    Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
-                                    Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
-                                </ButtonToolbar>
-                                <ButtonToolbar>
                                     <DropdownButton title="Program" id="program-dropdown">
                                         <MenuItem eventKey="1">Campus</MenuItem>
                                         <MenuItem eventKey="2">Online</MenuItem>
                                         <MenuItem eventKey="3">Innovation Academy</MenuItem>
+
                                     </DropdownButton>
                                     <DropdownButton title="Department" id="department-dropdown">
                                         <MenuItem eventKey="1">Computer & Information Science & Engineering</MenuItem>
                                         <MenuItem eventKey="2">Electrical Engineering</MenuItem>
                                     </DropdownButton>
+                                    Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
+                                    Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
+                                </ButtonToolbar>
+                                <ButtonToolbar>
                                     Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
                                 </ButtonToolbar>
                             </div>
@@ -77,9 +78,9 @@ export class RegistrationPage extends Component {
                             <ButtonToolbar>
                                 Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
                                 Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
+                                Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
                             </ButtonToolbar>
                             <ButtonToolbar>
-                                Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
                                 <DropdownButton title="Level Minimum" id="level-min-dropdown">
                                     <MenuItem eventKey="1">1000</MenuItem>
                                     <MenuItem eventKey="2">2000</MenuItem>
@@ -100,10 +101,10 @@ export class RegistrationPage extends Component {
                                     <MenuItem eventKey="7">7999</MenuItem>
                                     <MenuItem eventKey="8">8999</MenuItem>
                                 </DropdownButton>
-                            </ButtonToolbar>
-                            <ButtonToolbar>
                                 Instructor: <input name="Instructor" type="text" placeholder = "Instructor Last Name" id="instructor"/>
                                 Credits: <input name="Credits" type="text" placeholder = "# of Credits" id="credits"/>
+                            </ButtonToolbar>
+                            <ButtonToolbar>
                             </ButtonToolbar>
                         </Tab>
                         <Tab eventKey={2} title="Class Meeting">
