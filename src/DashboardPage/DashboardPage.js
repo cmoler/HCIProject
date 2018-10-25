@@ -31,7 +31,6 @@ const DefaultNotableFeedback = [
     "He's a good teacher -COP3502 F17",
     "He made me like programming -CEN3031 S18",
     "Best class ever -COP3503 F18",
-<<<<<<< HEAD
     "This is some gosh darn feedback -MAC2301 F11",
     "This is feedback as well -COP3502 F17",
 ]
@@ -48,12 +47,17 @@ var DefaultInstructorData = [
     [["Semester", "Score"], ["F17", 1.7],["S18", 1.7],["SU18", 2.4], ["F18", 3.2]],
     [["Semester", "Score"], ["F17", 5],["S18", 4],["SU18", 4], ["F18", 5]]
 ]
-=======
-    "This is some gosh darn feedback -MAC2301 F11"
-]
 
-const DefaultBio = "He is a teacher who likes stuff"
->>>>>>> Stylized ratings dashboard and made some fields dynamic
+var DefaultInstructorData = [
+    [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 4], ["F18", 5]],
+    [["Semester", "Score"], ["F17", 1.2],["S18", 1.4],["SU18", .8], ["F18", 4]],
+    [["Semester", "Score"], ["F17", 2.4],["S18", 2.4],["SU18", 2.4], ["F18", 1]],
+    [["Semester", "Score"], ["F17", 4.2],["S18", 1],["SU18", 2], ["F18", 1]],
+    [["Semester", "Score"], ["F17", 4.4],["S18", 3.3],["SU18", 2.2], ["F18", 1.1]],
+    [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 3], ["F18", 2]],
+    [["Semester", "Score"], ["F17", 1.7],["S18", 1.7],["SU18", 2.4], ["F18", 3.2]],
+    [["Semester", "Score"], ["F17", 5],["S18", 4],["SU18", 4], ["F18", 5]]
+]
 
 export class DashboardPage extends Component {
 
@@ -68,12 +72,8 @@ export class DashboardPage extends Component {
             radio: 0,
             courseOptions: DefaultCourseOptions,
             notableFeedback: DefaultNotableFeedback,
-<<<<<<< HEAD
             bio: DefaultBio,
             instructor_data: DefaultInstructorData
-=======
-            bio: DefaultBio
->>>>>>> Stylized ratings dashboard and made some fields dynamic
         };
         this.teacherName = props.match.params.teacher;
     }
@@ -99,23 +99,12 @@ export class DashboardPage extends Component {
               }
         };
         var page = (
-<<<<<<< HEAD
             <div>
                 <div className="header-group">
                     <div className="header-top">
                         <div className="header-title">
                             <Link to="/"><img className="uf-logo" src="/logo-uf.svg" alt="UF Logo" /></Link>
                             <h1 className="header">ONE.UF | RATINGS: {this.teacherName}</h1>
-=======
-            <div className="master-page">
-                <div className="header-group">
-                    <div className="header-top">
-                        <div className="back-button">
-                            <Button><Link to ="/">Back to Registration</Link></Button>
-                        </div>
-                        <div className="header-title">
-                            <h1 className="header">ONE.UF | RATINGS: ({this.teacherName.toUpperCase()}).</h1>
->>>>>>> Stylized ratings dashboard and made some fields dynamic
                         </div>
                     </div> 
                     <div className="header-bottom"></div>
@@ -167,10 +156,7 @@ export class DashboardPage extends Component {
                 <div className="bio">
                     <Well>
                         <div>{this.teacherName + "'s bio: "}</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> Stylized ratings dashboard and made some fields dynamic
                         <p>{this.state.bio}</p>
                     </Well>
                 </div>
