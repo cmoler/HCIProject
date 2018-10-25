@@ -36,6 +36,17 @@ const DefaultNotableFeedback = [
 
 const DefaultBio = "He is a teacher who likes stuff"
 
+var DefaultInstructorData = [
+    [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 4], ["F18", 5]],
+    [["Semester", "Score"], ["F17", 1.2],["S18", 1.4],["SU18", .8], ["F18", 4]],
+    [["Semester", "Score"], ["F17", 2.4],["S18", 2.4],["SU18", 2.4], ["F18", 1]],
+    [["Semester", "Score"], ["F17", 4.2],["S18", 1],["SU18", 2], ["F18", 1]],
+    [["Semester", "Score"], ["F17", 4.4],["S18", 3.3],["SU18", 2.2], ["F18", 1.1]],
+    [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 3], ["F18", 2]],
+    [["Semester", "Score"], ["F17", 1.7],["S18", 1.7],["SU18", 2.4], ["F18", 3.2]],
+    [["Semester", "Score"], ["F17", 5],["S18", 4],["SU18", 4], ["F18", 5]]
+]
+
 export class DashboardPage extends Component {
 
     constructor(props) {
@@ -49,7 +60,8 @@ export class DashboardPage extends Component {
             radio: 0,
             courseOptions: DefaultCourseOptions,
             notableFeedback: DefaultNotableFeedback,
-            bio: DefaultBio
+            bio: DefaultBio,
+            instructor_data: DefaultInstructorData
         };
         this.teacherName = props.match.params.teacher;
     }
@@ -67,7 +79,12 @@ export class DashboardPage extends Component {
             title: RadioOptions[this.state.radio] + " -- " + this.state.courseOptions[this.state.key],
             hAxis: { title: "Semester", viewWindow: { min: 0, max: 4 } },
             vAxis: { title: "Score", viewWindow: { min: 0, max: 5 } },
-            legend: "none"
+            legend: "none",
+            animation: {
+                duration: 500,
+                easing: 'out',
+                startup: true,
+              }
         };
 
         var overallClassData = [
@@ -112,7 +129,7 @@ export class DashboardPage extends Component {
                                 chartType="ColumnChart"
                                 width="100%"
                                 height="100%"
-                                data={overallClassData}
+                                data={this.state.instructor_data[this.state.radio]}
                                 options={graphOptions}
                             />
                     </div>
