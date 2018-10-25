@@ -17,7 +17,7 @@ const RadioOptions = [
     "Facilitation of Learning"
 ];
 
-const CourseOptions = [
+const DefaultCourseOptions = [
     "All Courses",
     "COP3502",
     "CEN3031",
@@ -27,17 +27,14 @@ const CourseOptions = [
     "CIS4739"
 ];
 
-const CourseOptions_big = [
-    "All Courses",
-    "COP3502",
-    "CEN3031",
-    "COP3503",
-    "EEL4390",
-    "CNT4007C",
-    "MAC2301",
-    "COP3530",
-    "CIS4730"
-];
+const DefaultNotableFeedback = [
+    "He's a good teacher -COP3502 F17",
+    "He made me like programming -CEN3031 S18",
+    "Best class ever -COP3503 F18",
+    "This is some gosh darn feedback -MAC2301 F11"
+]
+
+const DefaultBio = "He is a teacher who likes stuff"
 
 export class DashboardPage extends Component {
 
@@ -49,7 +46,10 @@ export class DashboardPage extends Component {
 
         this.state = {
             key: 0,
-            radio: 0
+            radio: 0,
+            courseOptions: DefaultCourseOptions,
+            notableFeedback: DefaultNotableFeedback,
+            bio: DefaultBio
         };
         this.teacherName = props.match.params.teacher;
     }
@@ -64,7 +64,7 @@ export class DashboardPage extends Component {
 
     render() {
         var graphOptions = {
-            title: RadioOptions[this.state.radio] + " -- " + CourseOptions[this.state.key],
+            title: RadioOptions[this.state.radio] + " -- " + this.state.courseOptions[this.state.key],
             hAxis: { title: "Semester", viewWindow: { min: 0, max: 4 } },
             vAxis: { title: "Score", viewWindow: { min: 0, max: 5 } },
             legend: "none"
@@ -79,13 +79,17 @@ export class DashboardPage extends Component {
         ];
 
         var page = (
-            <div>
-                <div className="back-button">
-                    <Button><Link to ="/">Back to Registration</Link></Button>
-                </div>
-
-                <div className="dash-title">
-                <h3>In Dashboard for { this.teacherName }</h3>
+            <div className="master-page">
+                <div className="header-group">
+                    <div className="header-top">
+                        <div className="back-button">
+                            <Button><Link to ="/">Back to Registration</Link></Button>
+                        </div>
+                        <div className="header-title">
+                            <h1 className="header">ONE.UF | RATINGS: ({this.teacherName.toUpperCase()}).</h1>
+                        </div>
+                    </div> 
+                    <div className="header-bottom"></div>
                 </div>
 
                 <div className="chart-group">
@@ -96,7 +100,7 @@ export class DashboardPage extends Component {
                             id="course-tab-control"
                             >
                             {
-                                CourseOptions.map(function(value, i) {
+                                this.state.courseOptions.map(function(value, i) {
                                     return <Tab eventKey={i} title={value}/>
                                 })
                             }
@@ -138,17 +142,18 @@ export class DashboardPage extends Component {
                     <Well>
                         <div>{this.teacherName + "'s bio: "}</div>
 
-                        <p>Hes a teacher who teaches stuff</p>
+                        <p>{this.state.bio}</p>
                     </Well>
                 </div>
 
                 <div className="feedback">
                     <Well>
                         <div>Notable Feedback:</div>
-
-                        <div>"He's a good teacher" -COP3502 F17</div>
-                        <div>"He made me like programming" -CEN3031 S18</div>
-                        <div>"Best class ever" -COP3503 F18</div>
+                        {
+                            this.state.notableFeedback.map(function(feedback, i) {
+                                return <div>{feedback}</div>
+                            })
+                        }
                     </Well>
                 </div>
             </div>
