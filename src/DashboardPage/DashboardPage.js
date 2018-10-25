@@ -87,14 +87,6 @@ export class DashboardPage extends Component {
               }
         };
 
-        var overallClassData = [
-            ["Semester", "Score"],
-            ["F17", 3.4],
-            ["S18", 4.3],
-            ["SU18", 3.1],
-            ["F18", 4.5]
-        ];
-
         var page = (
             <div className="master-page">
                 <div className="header-group">
