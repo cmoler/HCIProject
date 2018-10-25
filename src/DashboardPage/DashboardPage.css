@@ -10,24 +10,27 @@
     bottom: 10px;
     background-color: #285797;
     border: 1px solid blue;
+    height: 60px;
 }
 
 .header-bottom {
     position: relative;
-    height: 8px;
+    height: 3px;
     background-color: #ee7c00;
 }
 
 .title-bar {
     position: relative;
     border: 1px solid green;
+    display: inline;
 }
 
 .header {
     position: relative;
-    top: 0;
-    left: 10px;
+    top: 2px;
+    left: 30px;
     font-size: 18px;
+    display: inline;
 }
 
 .header-title {
@@ -35,6 +38,9 @@
     text-align: left;
     color: white;
     font-family: Roboto,Arial,sans-serif;
+    display: inline;
+    left: 10px;
+    top: 10px;
 }
 
 .chart-tabs {
@@ -43,6 +49,7 @@
     left: 20vw;
     width: 50vw;
     border: 1px solid #285797;
+    background-color: #d8d8d8
 }
 
 .chart {
@@ -89,6 +96,14 @@
     max-width: 25vw;
 }
 
-.master_page {
-    background-color: rgb(246, 244, 237);
+.uf-logo {
+    width: 48px;
+    top: 20px;
+    display: inline;
+}
+
+.back-button {
+    top: 10px;
+    display: inline;
+    position: relative;
 }
