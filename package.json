@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "file-loader": "^2.0.0",
     "prop-types": "latest",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
@@ -14,7 +15,8 @@
     "react-responsive-modal": "^3.4.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "webpack": "^4.23.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "url-loader": "^1.1.2"
   }
 }
