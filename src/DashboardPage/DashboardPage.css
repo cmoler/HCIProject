@@ -42,7 +42,7 @@
     top: 0;
     left: 20vw;
     width: 50vw;
-    border: 1px solid red;
+    border: 1px solid #285797;
 }
 
 .chart {
@@ -51,19 +51,19 @@
     left: 20vw;
     width: 50vw;
     height: 70vh;
-    border: 1px solid green;
+    border: 1px solid #285797;
 }
 
 .chart-radio {
     position: absolute;
     top: 15vh;
     left: 4.4vw;
-    border: 1px solid green;
+    border: 2px solid #ee7c00;
 }
 
 .chart-group {
     position: relative;
-    border: 1px solid lawngreen;
+    border: 0;
     top: 1vh;
     height: 85vh;
     max-height: 85vh;
@@ -73,7 +73,7 @@
 
 .feedback {
     position: absolute;
-    border: 1px solid green;
+    border: 2px solid #285797;
     left: 72vw;
     top: 50vh;
     max-height: 25vh;
@@ -82,7 +82,7 @@
 
 .bio {
     position: absolute;
-    border: 1px solid green;
+    border: 2px solid #285797;
     left: 72vw;
     top: 30vh;
     max-height: 25vh;
