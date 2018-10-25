@@ -91,13 +91,8 @@ export class DashboardPage extends Component {
             <div>
                 <div className="header-group">
                     <div className="header-top">
-                        <div className="back-button">
-                            <Link to ="/">
-                                Go back
-                            </Link>
-                        </div>
                         <div className="header-title">
-                            <img className="uf-logo" src="/logo-uf.svg" alt="UF Logo" />
+                            <Link to="/"><img className="uf-logo" src="/logo-uf.svg" alt="UF Logo" /></Link>
                             <h1 className="header">ONE.UF | RATINGS: {this.teacherName}</h1>
                         </div>
                     </div> 
