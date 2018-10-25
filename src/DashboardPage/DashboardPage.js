@@ -88,14 +88,15 @@ export class DashboardPage extends Component {
         };
 
         var page = (
-            <div className="master-page">
+            <div>
                 <div className="header-group">
                     <div className="header-top">
                         <div className="back-button">
                             <Button><Link to ="/">Back to Registration</Link></Button>
                         </div>
                         <div className="header-title">
-                            <h1 className="header">ONE.UF | RATINGS: ({this.teacherName.toUpperCase()}).</h1>
+                            <img className="uf-logo" src="/logo-uf.svg" alt="UF Logo" />
+                            <h1 className="header">ONE.UF | RATINGS: {this.teacherName}</h1>
                         </div>
                     </div> 
                     <div className="header-bottom"></div>
@@ -135,14 +136,11 @@ export class DashboardPage extends Component {
                             defaultValue={0}
                             onChange={this.handleChange}
                         >
-                            <ToggleButton value={0}>Overall Assessment</ToggleButton>
-                            <ToggleButton value={1}>Communication of Ideas and Information</ToggleButton>
-                            <ToggleButton value={2}>Expression of Expectations</ToggleButton>
-                            <ToggleButton value={3}>Availability to Students</ToggleButton>
-                            <ToggleButton value={4}>Respect for Students</ToggleButton>
-                            <ToggleButton value={5}>Simulation of Interest in Course</ToggleButton>
-                            <ToggleButton value={6}>Facilitation of Learning</ToggleButton>
-                            <ToggleButton value={7}>Description of Course Objectives</ToggleButton>
+                            {
+                                RadioOptions.map(function(option, i) {
+                                    return <ToggleButton value={i}>{option}</ToggleButton>
+                                })
+                            }
                         </ToggleButtonGroup>
                     </div>
                 </div>
