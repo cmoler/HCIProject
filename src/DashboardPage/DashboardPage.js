@@ -87,7 +87,6 @@ export class DashboardPage extends Component {
                 startup: true,
               }
         };
-
         var page = (
             <div>
                 <div className="header-group">
