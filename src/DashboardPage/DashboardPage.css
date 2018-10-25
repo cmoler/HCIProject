@@ -3,10 +3,11 @@
 }
 
 .chart-tabs {
-    position: absolute;
+    position: relative;
     top: 0;
-    left: 30vw;
-    border: 1px solid green;
+    left: 20vw;
+    width: 50vw;
+    border: 1px solid red;
 }
 
 .chart {

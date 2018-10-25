@@ -7,21 +7,36 @@ import Chart from "react-google-charts";
 import {Link} from "react-router-dom";
 
 const RadioOptions = [
+    "Overall Assessment",
     "Description of Course Objectives",
     "Communication of Ideas and Information",
     "Expression of Expectations",
     "Availability to Students",
     "Respect for Students",
     "Simulation of Interest in Course",
-    "Facilitation of Learning",
-    "Overall Assessment"
+    "Facilitation of Learning"
 ];
 
 const CourseOptions = [
     "All Courses",
     "COP3502",
     "CEN3031",
-    "COP3503"
+    "EEL4390",
+    "CNT4007C",
+    "MAC2301",
+    "CIS4739"
+];
+
+const CourseOptions_big = [
+    "All Courses",
+    "COP3502",
+    "CEN3031",
+    "COP3503",
+    "EEL4390",
+    "CNT4007C",
+    "MAC2301",
+    "COP3530",
+    "CIS4730"
 ];
 
 export class DashboardPage extends Component {
@@ -63,7 +78,7 @@ export class DashboardPage extends Component {
             ["F18", 4.5]
         ];
 
-        return(
+        var page = (
             <div>
                 <div className="back-button">
                     <Button><Link to ="/">Back to Registration</Link></Button>
@@ -80,10 +95,11 @@ export class DashboardPage extends Component {
                             activeKey={this.state.key}
                             id="course-tab-control"
                             >
-                            <Tab eventKey={0} title="All Courses"/>
-                            <Tab eventKey={1} title="COP3502"/>
-                            <Tab eventKey={2} title="CEN3031"/>
-                            <Tab eventKey={3} title="COP3503"/>
+                            {
+                                CourseOptions.map(function(value, i) {
+                                    return <Tab eventKey={i} title={value}/>
+                                })
+                            }
                         </Tabs>
                     </div>
 
@@ -106,14 +122,14 @@ export class DashboardPage extends Component {
                             defaultValue={0}
                             onChange={this.handleChange}
                         >
-                            <ToggleButton value={0}>Description of Course Objectives</ToggleButton>
+                            <ToggleButton value={0}>Overall Assessment</ToggleButton>
                             <ToggleButton value={1}>Communication of Ideas and Information</ToggleButton>
                             <ToggleButton value={2}>Expression of Expectations</ToggleButton>
                             <ToggleButton value={3}>Availability to Students</ToggleButton>
                             <ToggleButton value={4}>Respect for Students</ToggleButton>
                             <ToggleButton value={5}>Simulation of Interest in Course</ToggleButton>
                             <ToggleButton value={6}>Facilitation of Learning</ToggleButton>
-                            <ToggleButton value={7}>Overall Assessment</ToggleButton>
+                            <ToggleButton value={7}>Description of Course Objectives</ToggleButton>
                         </ToggleButtonGroup>
                     </div>
                 </div>
@@ -137,5 +153,8 @@ export class DashboardPage extends Component {
                 </div>
             </div>
         );
+
+
+        return(page);
     }
 }
