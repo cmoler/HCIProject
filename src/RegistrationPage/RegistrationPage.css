@@ -48,3 +48,33 @@ h3 {
 	margin: auto;
 	border: 5px solid blue;
 }
+
+.header-group {
+    position: relative;
+    top: 0;
+}
+
+.header-top {
+    position: relative;
+    top: 0;
+    bottom: 10px;
+    background-color: #285797;
+    border: 1px solid #285797;
+    height: 60px;
+}
+
+.header-bottom {
+    position: relative;
+    height: 3px;
+    background-color: #ee7c00;
+}
+
+.header-title {
+    position: relative;
+    text-align: left;
+    color: white;
+    font-family: Roboto,Arial,sans-serif;
+    display: inline;
+    left: 10px;
+    top: 10px;
+}

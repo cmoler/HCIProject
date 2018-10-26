@@ -7,6 +7,11 @@ import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.
 import {ScoresPerClassModal} from "../ScoresPerClassModal/ScoresPerClassModal";
 import {InstructorsForCourseModal} from "../InstructorsForCourseModal/InstructorsForCourseModal";
 
+
+// function setNewInstructor(newInstructor) {
+//     this.setState({ instructorSelected: newInstructor })
+// }
+
 export class RegistrationPage extends Component {
     constructor(props, context) {
         super(props, context);
@@ -32,6 +37,10 @@ export class RegistrationPage extends Component {
             }];
     }
 
+    // handleInstructorModal(text) {
+    //     setNewInstructor(text)
+    // }
+
     handleSelectRow(row, isSelected, e) {
         /*onClick: (name, credits, rating, professor) => {
             this.setState({ instructorsForCourseShow: true })
@@ -52,6 +61,14 @@ export class RegistrationPage extends Component {
 
         return (
             <div>
+                <div className="header-group">
+                    <div className="header-top">
+                        <div className="header-title">
+                            <h1 className="header">ONE.UF | Schedule of Courses</h1>
+                        </div>
+                    </div> 
+                    <div className="header-bottom"></div>
+                </div>
                 <div className="filters">
                     <Tabs defaultActiveKey={0} id="filter-tabs" className = "tabClass" justified>
                         <Tab eventKey={0} title="Filters">
@@ -189,7 +206,10 @@ export class RegistrationPage extends Component {
                                             <td>3</td>
                                             <td>10</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ scoresPerClassModalShow: true })}>
+                                                <Button bsStyle="default" onClick={() => 
+                                                        this.setState({ scoresPerClassModalShow: true })//,
+                                                        //this.handleInstructorModal("J.Ruiz")
+                                                }>
                                                     J. Ruiz
                                                 </Button>
                                             </td>
