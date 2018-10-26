@@ -31,7 +31,8 @@ const DefaultNotableFeedback = [
     "He's a good teacher -COP3502 F17",
     "He made me like programming -CEN3031 S18",
     "Best class ever -COP3503 F18",
-    "This is some gosh darn feedback -MAC2301 F11"
+    "This is some gosh darn feedback -MAC2301 F11",
+    "This is feedback as well -COP3502 F17",
 ]
 
 const DefaultBio = "He is a teacher who likes stuff"
@@ -145,7 +146,6 @@ export class DashboardPage extends Component {
                 <div className="bio">
                     <Well>
                         <div>{this.teacherName + "'s bio: "}</div>
-
                         <p>{this.state.bio}</p>
                     </Well>
                 </div>
