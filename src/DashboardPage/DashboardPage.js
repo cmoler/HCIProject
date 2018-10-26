@@ -156,7 +156,6 @@ export class DashboardPage extends Component {
                 <div className="bio">
                     <Well>
                         <div>{this.teacherName + "'s bio: "}</div>
-
                         <p>{this.state.bio}</p>
                     </Well>
                 </div>
