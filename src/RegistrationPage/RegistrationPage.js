@@ -350,7 +350,7 @@ export class RegistrationPage extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                <td>7:25</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -360,7 +360,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>2</td>
+                                <td>8:30</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -370,7 +370,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>3</td>
+                                <td>9:35</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -380,7 +380,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>4</td>
+                                <td>10:40</td>
                                 <td>MAC 2012</td>
                                 <td></td>
                                 <td>MAC 2012</td>
@@ -390,7 +390,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>5</td>
+                                <td>11:45</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -400,27 +400,17 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>6</td>
+                                <td>12:50</td>
                                 <td></td>
-                                <td>CNT 4007C</td>
+                                <td rowspan="2">CNT 4007C</td>
                                 <td></td>
-                                <td>CNT 4007C</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td></td>
-                                <td>CNT 4007C</td>
-                                <td></td>
-                                <td>CNT 4007C</td>
+                                <td rowspan="2">CNT 4007C</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>8</td>
+                                <td>1:55</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -430,7 +420,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>9</td>
+                                <td>3:00</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -440,7 +430,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>10</td>
+                                <td>4:05</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -450,7 +440,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>E1</td>
+                                <td>5:10</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -460,7 +450,7 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>E2</td>
+                                <td>6:15</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -470,7 +460,17 @@ export class RegistrationPage extends Component {
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>E3</td>
+                                <td>7:20</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>8:25</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -482,6 +482,25 @@ export class RegistrationPage extends Component {
                         </tbody>
                     </table>
                 </div>
+
+                <ButtonToolbar>
+                    <Button
+                        bsStyle="default"
+                        onClick={() => this.setState({ scoresPerClassModalShow: true })}
+                    >
+                        Scores Per Class Modal
+                    </Button>
+                    <Button
+                        bsStyle="default"
+                        onClick={() => this.setState({ instructorsForCourseShow: true })}
+                    >
+                        Instructors For Class Modal
+                    </Button>
+                    <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} />
+                    <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} />
+                </ButtonToolbar>
+                <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} />
+                <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} />
             </div>
         );
     }

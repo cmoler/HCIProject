@@ -82,3 +82,8 @@ h3 {
 	margin: auto;
 	padding-top: 55px;
 }
+
+.potential-classes {
+	position: relative;
+	width:100%;
+}
