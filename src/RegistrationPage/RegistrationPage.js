@@ -7,22 +7,15 @@ import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.
 import {ScoresPerClassModal} from "../ScoresPerClassModal/ScoresPerClassModal";
 import {InstructorsForCourseModal} from "../InstructorsForCourseModal/InstructorsForCourseModal";
 
-const rowEvents = {
-    onClick: (name, credits, rating, professor) => {
-        this.setState({ instructorsForCourseShow: true })
-        this.setState({ scoresPerClassModalShow: true })
-        alert("Jake!")
-    }
-
-}
-
 export class RegistrationPage extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
             scoresPerClassModalShow: false,
-            instructorsForCourseShow: false
+            instructorsForCourseShow: false,
+            instructorSelected: "Jake Mellinger",
+            courseSelected: "Being Awesome 101"
         };
 
         this.interdisciplinary = [{
@@ -39,11 +32,23 @@ export class RegistrationPage extends Component {
             }];
     }
 
+    handleSelectRow(row, isSelected, e) {
+        /*onClick: (name, credits, rating, professor) => {
+            this.setState({ instructorsForCourseShow: true })
+            this.setState({ scoresPerClassModalShow: true })
+            alert("Jake!")
+        }*/
 
+        alert("Jake!");
+    }
 
     render() {
         let scoresPerClassClose = () => this.setState({ scoresPerClassModalShow: false });
         let instructorsForCourseClose = () => this.setState ({ instructorsForCourseShow: false});
+        const selectRow ={
+            mode: 'radio',
+            onSelect: this.handleSelectRow
+        };
 
         return (
             <div>
@@ -208,7 +213,7 @@ export class RegistrationPage extends Component {
                                 
                             </DropdownButton>
                             <DropdownButton title="Technical Electives" id="dropdown-2">
-                                <BootstrapTable ref='technical' data={ this.interdisciplinary } rowEvents={rowEvents}>
+                                <BootstrapTable ref='technical' data={ this.interdisciplinary } selectRow={ selectRow }>
                                     <TableHeaderColumn dataField='name' isKey={true} dataSort={true} width='15vw'>Name</TableHeaderColumn>
                                     <TableHeaderColumn dataField='credits' dataSort={true} width='5vw'>Credits</TableHeaderColumn>
                                     <TableHeaderColumn dataField='rating' dataSort={true} width='5vw'>Rating</TableHeaderColumn>
