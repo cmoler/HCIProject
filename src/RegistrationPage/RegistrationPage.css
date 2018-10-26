@@ -75,3 +75,10 @@ h3 {
     left: 10px;
     top: 10px;
 }
+
+.schedule {
+	position: relative;
+	width: 80%;
+	margin: auto;
+	padding-top: 55px;
+}

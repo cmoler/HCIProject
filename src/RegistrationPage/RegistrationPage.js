@@ -35,11 +35,15 @@ export class RegistrationPage extends Component {
                 rating: 8.3,
                 professor: "Wilson"
             }];
+
+        this.handleInstructorModal.bind(this);
     }
 
-    // handleInstructorModal(text) {
-    //     setNewInstructor(text)
-    // }
+    handleInstructorModal(text) {
+        this.setState({instructorSelected: text});
+        //alert("Jake!")
+        //setNewInstructor(text)
+    }
 
     handleSelectRow(row, isSelected, e) {
         /*onClick: (name, credits, rating, professor) => {
@@ -64,6 +68,7 @@ export class RegistrationPage extends Component {
                 <div className="header-group">
                     <div className="header-top">
                         <div className="header-title">
+                            <img className="uf-logo" src="/logo-uf.svg" alt="UF Logo" />
                             <h1 className="header">ONE.UF | Schedule of Courses</h1>
                         </div>
                     </div> 
@@ -207,7 +212,8 @@ export class RegistrationPage extends Component {
                                             <td>10</td>
                                             <td>
                                                 <Button bsStyle="default" onClick={() => 
-                                                        this.setState({ scoresPerClassModalShow: true })//,
+                                                        this.setState({ scoresPerClassModalShow: true })
+                                                        //setNewInstructor("J. Ruiz")
                                                         //this.handleInstructorModal("J.Ruiz")
                                                 }>
                                                     J. Ruiz
@@ -233,44 +239,249 @@ export class RegistrationPage extends Component {
                                 
                             </DropdownButton>
                             <DropdownButton title="Technical Electives" id="dropdown-2">
-                                <BootstrapTable ref='technical' data={ this.interdisciplinary } selectRow={ selectRow }>
-                                    <TableHeaderColumn dataField='name' isKey={true} dataSort={true} width='15vw'>Name</TableHeaderColumn>
-                                    <TableHeaderColumn dataField='credits' dataSort={true} width='5vw'>Credits</TableHeaderColumn>
-                                    <TableHeaderColumn dataField='rating' dataSort={true} width='5vw'>Rating</TableHeaderColumn>
-                                    <TableHeaderColumn dataField='professor' dataSort={true} width='10vw'>Professor</TableHeaderColumn>
-                                </BootstrapTable>                            
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Course</th>
+                                            <th scope="col">Credits</th>
+                                            <th scope="col">Rating</th>
+                                            <th scope="col">Professor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                    Human Computer Interaction
+                                                </Button>
+                                            </td>
+                                            <td>3</td>
+                                            <td>10</td>
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => 
+                                                        this.setState({ scoresPerClassModalShow: true })//,
+                                                        //this.handleInstructorModal("J.Ruiz")
+                                                }>
+                                                    J. Ruiz
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                    Penetration Testing
+                                                </Button>
+                                            </td>
+                                            <td>3</td>
+                                            <td>8.3</td>
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => this.setState({ scoresPerClassModalShow: true })}>
+                                                    Wilson
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                            
                             </DropdownButton>
                             <DropdownButton title="General Education" id="dropdown-2">
-                                <BootstrapTable ref='general' data={ this.interdisciplinary }>
-                                    <TableHeaderColumn dataField='name' isKey={true} dataSort={true} width='15vw'>Name</TableHeaderColumn>
-                                    <TableHeaderColumn dataField='credits' dataSort={true} width='5vw'>Credits</TableHeaderColumn>
-                                    <TableHeaderColumn dataField='rating' dataSort={true} width='5vw'>Rating</TableHeaderColumn>
-                                    <TableHeaderColumn dataField='professor' dataSort={true} width='10vw'>Professor</TableHeaderColumn>
-                                </BootstrapTable>
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Course</th>
+                                            <th scope="col">Credits</th>
+                                            <th scope="col">Rating</th>
+                                            <th scope="col">Professor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                    Human Computer Interaction
+                                                </Button>
+                                            </td>
+                                            <td>3</td>
+                                            <td>10</td>
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => 
+                                                        this.setState({ scoresPerClassModalShow: true })//,
+                                                        //this.handleInstructorModal("J.Ruiz")
+                                                }>
+                                                    J. Ruiz
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                    Penetration Testing
+                                                </Button>
+                                            </td>
+                                            <td>3</td>
+                                            <td>8.3</td>
+                                            <td>
+                                                <Button bsStyle="default" onClick={() => this.setState({ scoresPerClassModalShow: true })}>
+                                                    Wilson
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </DropdownButton>
                         </ButtonGroup>
                     </ButtonToolbar>
                 </div>
 
                 <div className="schedule">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Meeting Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>MAC 2012</td>
+                                <td></td>
+                                <td>MAC 2012</td>
+                                <td></td>
+                                <td>MAC 2012</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td></td>
+                                <td>CNT 4007C</td>
+                                <td></td>
+                                <td>CNT 4007C</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td></td>
+                                <td>CNT 4007C</td>
+                                <td></td>
+                                <td>CNT 4007C</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>E1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>E2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>E3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <ButtonToolbar>
-                    <Button
-                        bsStyle="default"
-                        onClick={() => this.setState({ scoresPerClassModalShow: true })}
-                    >
-                        Scores Per Class Modal
-                    </Button>
-                    <Button
-                        bsStyle="default"
-                        onClick={() => this.setState({ instructorsForCourseShow: true })}
-                    >
-                        Instructors For Class Modal
-                    </Button>
-                    <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} />
-                    <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} />
-                </ButtonToolbar>
             </div>
         );
     }
