@@ -104,6 +104,7 @@ export class RegistrationPage extends Component {
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
 
+                    var modalb = "<Button onClick={() => this.setState({ instructorsForCourseShow: true })}>Penetration Testing</Button>"
                     cell1.innerHTML = myArr[i].Name;
                     cell2.innerHTML = myArr[i].Credits;
                     cell3.innerHTML = myArr[i].Rating;
@@ -111,9 +112,15 @@ export class RegistrationPage extends Component {
                 }
             }
         };
-        var url = "https://intense-springs-54094.herokuapp.com/api/course_schedule?CourseNumber=COP3502";
+        var url = "https://intense-springs-54094.herokuapp.com/api/course_schedule";
+        var data = JSON.stringify({
+            "CouseNumber": "COP3502"
+        });
+
+        
         xmlhttp.open("POST", url, true);
-        xmlhttp.send();
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        xmlhttp.send(data);
 }
 
     render() {
