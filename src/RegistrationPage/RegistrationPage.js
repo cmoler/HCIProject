@@ -104,11 +104,26 @@ export class RegistrationPage extends Component {
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
 
-                    var modalb = "<Button onClick={() => this.setState({ instructorsForCourseShow: true })}>Penetration Testing</Button>"
-                    cell1.innerHTML = myArr[i].Name;
+                    var courseButton = document.createElement("input");
+                    courseButton.type = "Button";
+                    courseButton.value = myArr[i].Name;
+                    courseButton.onclick = function() {
+                        this.setState({ instructorsForCourseShow: true });
+                        this.setState({ courseSelected: myArr[i].Name });
+                    }.bind(this);
+
+                    var instructorButton = document.createElement("input");
+                    instructorButton.type = "Button";
+                    instructorButton.value = myArr[i].Professor;
+                    instructorButton.onclick = function() {
+                        this.setState({ scoresPerClassModalShow: true });
+                        this.setState({ instructorSelected: myArr[i].Name });
+                    }.bind(this);
+
+                    cell1.appendChild(courseButton);
                     cell2.innerHTML = myArr[i].Credits;
                     cell3.innerHTML = myArr[i].Rating;
-                    cell4.innerHTML = myArr[i].Professor;
+                    cell4.appendChild(instructorButton);
                 }
             }
         };
@@ -121,7 +136,7 @@ export class RegistrationPage extends Component {
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send(data);
-}
+    }
 
     render() {
         let scoresPerClassClose = () => this.setState({ scoresPerClassModalShow: false });
@@ -528,8 +543,6 @@ export class RegistrationPage extends Component {
                             </tr>
                             <tr>
                                 <td>1:55</td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
