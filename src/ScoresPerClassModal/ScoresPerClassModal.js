@@ -44,7 +44,7 @@ export class ScoresPerClassModal extends React.Component {
                 dialogClassName="class-modal"
             >
                 <Modal.Header>
-                    <Modal.Title id="contained-modal-title-sm">Joshua Fox</Modal.Title>
+                    <Modal.Title id="contained-modal-title-sm">{this.props.instructor}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div class="first-column">

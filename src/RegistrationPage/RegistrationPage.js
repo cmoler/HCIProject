@@ -590,8 +590,8 @@ export class RegistrationPage extends Component {
                     <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} />
                     <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} />
                 </ButtonToolbar>
-                <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} />
-                <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} />
+                <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} instructor={this.state.instructorSelected}/>
+                <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} course={this.state.courseSelected} />
             </div>
         );
     }

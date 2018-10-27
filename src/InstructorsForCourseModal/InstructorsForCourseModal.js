@@ -21,6 +21,7 @@ const options = {
 };
 
 export class InstructorsForCourseModal extends React.Component {
+
     render() {
         return (
             <Modal
@@ -30,7 +31,7 @@ export class InstructorsForCourseModal extends React.Component {
                 dialogClassName="course-modal"
             >
                 <Modal.Header>
-                    <Modal.Title id="contained-modal-title-sm">COP3503 - Programming Fundamentals 2</Modal.Title>
+                    <Modal.Title id="contained-modal-title-sm">{this.props.course}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div class="first-column">
