@@ -12,6 +12,8 @@ import {InstructorsForCourseModal} from "../InstructorsForCourseModal/Instructor
 //     this.setState({ instructorSelected: newInstructor })
 // }
 
+
+
 export class RegistrationPage extends Component {
     constructor(props, context) {
         super(props, context);
@@ -19,6 +21,7 @@ export class RegistrationPage extends Component {
         this.state = {
             scoresPerClassModalShow: false,
             instructorsForCourseShow: false,
+            programLevel: "Undergraduate",
             instructorSelected: "Jake Mellinger",
             courseSelected: "Being Awesome 101"
         };
@@ -39,21 +42,62 @@ export class RegistrationPage extends Component {
         this.handleInstructorModal.bind(this);
     }
 
+    updateState(newEvent) {
+        this.setState({
+            programLevel: newEvent.value
+        })
+    }
+
     handleInstructorModal(text) {
         this.setState({instructorSelected: text});
         //alert("Jake!")
         //setNewInstructor(text)
     }
 
-    handleSelectRow(row, isSelected, e) {
-        /*onClick: (name, credits, rating, professor) => {
-            this.setState({ instructorsForCourseShow: true })
-            this.setState({ scoresPerClassModalShow: true })
-            alert("Jake!")
-        }*/
 
-        alert("Jake!");
+    getSearchCriteria() {
+    //get DOM ID of every place they entered data and return it 
+    var searchCriteria = [];
+    
+    //program level
+    //department
+    if(typeof document.getElementById('courseNumber').value !== "undefined") {
+        searchCriteria.push(document.getElementById('courseNumber').value);
     }
+    else {
+        searchCriteria.push(document.getElementById('courseNumber2').value);
+    }
+
+    if(typeof document.getElementById('classNumber').value !== "undefined") {
+        searchCriteria.push(document.getElementById('classNumber').value);        
+    }
+    else {
+        searchCriteria.push(document.getElementById('classNumber2').value);        
+    }
+
+    if(typeof document.getElementById('courseTitle').value !== "undefined") {
+        searchCriteria.push(document.getElementById('courseTitle').value);
+    }
+    else {
+        searchCriteria.push(document.getElementById('courseTitle2').value);
+    }
+
+    //levelmin
+    //level max
+
+    searchCriteria.push(document.getElementById('instructor').value);
+    searchCriteria.push(document.getElementById('credits').value);
+
+    //class meeting
+
+    //POST REQUEST HERE
+    // var chosen = document.getElementById("program-level-dropdown");
+    // var strUser = chosen.options[chosen.selectedIndex].text;
+    // alert(strUser);
+
+    var chosen2 = document.getElementById("program-level-dropdown2").value;
+    alert(chosen2);
+}
 
     render() {
         let scoresPerClassClose = () => this.setState({ scoresPerClassModalShow: false });
@@ -79,55 +123,59 @@ export class RegistrationPage extends Component {
                         <Tab eventKey={0} title="Filters">
                             <div className="filter-options">
                                 <ButtonToolbar>
-                                    <DropdownButton title="Program level" id="program-level-dropdown">
-                                        <MenuItem eventKey="1">Undergraduate</MenuItem>
-                                        <MenuItem eventKey="2">Graduate</MenuItem>
-                                    </DropdownButton>
-                                    <DropdownButton title="Program" id="program-dropdown">
-                                        <MenuItem eventKey="1">Campus</MenuItem>
-                                        <MenuItem eventKey="2">Online</MenuItem>
-                                        <MenuItem eventKey="3">Innovation Academy</MenuItem>
-
-                                    </DropdownButton>
-                                    <DropdownButton title="Department" id="department-dropdown">
-                                        <MenuItem eventKey="1">Computer & Information Science & Engineering</MenuItem>
-                                        <MenuItem eventKey="2">Electrical Engineering</MenuItem>
-                                    </DropdownButton>
-                                    Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
-                                    Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
+                                    Program Level: <select title="Program level" id="program-level-dropdown">
+                                        <option value="Undefined">--</option>
+                                        <option value="Undergraduate">Undergraduate</option>
+                                        <option value="Graduate">Graduate</option>
+                                    </select>
+                                    Program: <select title="Program" id="program-dropdown">
+                                        <option value="Undefined">--</option>
+                                        <option value="Campus">Campus</option>
+                                        <option value="Online">Online</option>
+                                        <option value="Innovation Academy">Innovation Academy</option>
+                                    </select>
+                                    Department: <select title="Department" id="department-dropdown">
+                                        <option value="Undefined">--</option>
+                                        <option value="Computer & Information Science & Engineering">Computer & Information Science & Engineering</option>
+                                        <option eventKey="Electrical Engineering">Electrical Engineering</option>
+                                    </select>
                                 </ButtonToolbar>
                                 <ButtonToolbar>
+                                    Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
+                                    Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
                                     Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
                                 </ButtonToolbar>
                             </div>
                         </Tab>
                         <Tab eventKey={1} title="Course Filter">
                             <ButtonToolbar>
-                                Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber"/>
-                                Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber"/>
-                                Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle"/>
+                                Course Number: <input name="Course Number" type="text" placeholder = "ex:ACG 2021" id="courseNumber2"/>
+                                Class Number: <input name="Class Number" type="text" placeholder = "ex: 15110" id="classNumber2"/>
+                                Course Title: <input name="Course Title" type="text" placeholder = "Course Title or Keyword" id="courseTitle2"/>
                             </ButtonToolbar>
                             <ButtonToolbar>
-                                <DropdownButton title="Level Minimum" id="level-min-dropdown">
-                                    <MenuItem eventKey="1">1000</MenuItem>
-                                    <MenuItem eventKey="2">2000</MenuItem>
-                                    <MenuItem eventKey="3">3000</MenuItem>
-                                    <MenuItem eventKey="4">4000</MenuItem>
-                                    <MenuItem eventKey="5">5000</MenuItem>
-                                    <MenuItem eventKey="6">6000</MenuItem>
-                                    <MenuItem eventKey="7">7000</MenuItem>
-                                    <MenuItem eventKey="8">8000</MenuItem>
-                                </DropdownButton>
-                                <DropdownButton title="Level Maximum" id="level-max-dropdown">
-                                    <MenuItem eventKey="1">1999</MenuItem>
-                                    <MenuItem eventKey="2">2999</MenuItem>
-                                    <MenuItem eventKey="3">3999</MenuItem>
-                                    <MenuItem eventKey="4">4999</MenuItem>
-                                    <MenuItem eventKey="5">5999</MenuItem>
-                                    <MenuItem eventKey="6">6999</MenuItem>
-                                    <MenuItem eventKey="7">7999</MenuItem>
-                                    <MenuItem eventKey="8">8999</MenuItem>
-                                </DropdownButton>
+                                Minimum Level: <select title="Level Minimum" id="level-min-dropdown">
+                                    <option value="Undefined">--</option>
+                                    <option value="1000">1000</option>
+                                    <option value="2000">2000</option>
+                                    <option value="3000">3000</option>
+                                    <option value="4000">4000</option>
+                                    <option value="5000">5000</option>
+                                    <option value="6000">6000</option>
+                                    <option value="7000">7000</option>
+                                    <option value="8000">8000</option>
+                                </select>
+                                Maximum Level: <select title="Level Maximum" id="level-max-dropdown">
+                                    <option value="Undefined">--</option>
+                                    <option value="1999">1999</option>
+                                    <option value="2999">2999</option>
+                                    <option value="3999">3999</option>
+                                    <option value="4999">4999</option>
+                                    <option value="5999">5999</option>
+                                    <option value="6999">6999</option>
+                                    <option value="7999">7999</option>
+                                    <option value="8999">8999</option>
+                                </select>
                                 Instructor: <input name="Instructor" type="text" placeholder = "Instructor Last Name" id="instructor"/>
                                 Credits: <input name="Credits" type="text" placeholder = "# of Credits" id="credits"/>
                             </ButtonToolbar>
@@ -146,41 +194,43 @@ export class RegistrationPage extends Component {
                                 <ToggleButton value={6}>Sunday</ToggleButton>
                             </ToggleButtonGroup>
                             <h4>Periods</h4>
-                            <DropdownButton title="Period Start">
-                                <MenuItem eventKey="1">1</MenuItem>
-                                <MenuItem eventKey="2">2</MenuItem>
-                                <MenuItem eventKey="3">3</MenuItem>
-                                <MenuItem eventKey="4">4</MenuItem>
-                                <MenuItem eventKey="5">5</MenuItem>
-                                <MenuItem eventKey="6">6</MenuItem>
-                                <MenuItem eventKey="7">7</MenuItem>
-                                <MenuItem eventKey="8">8</MenuItem>
-                                <MenuItem eventKey="9">9</MenuItem>
-                                <MenuItem eventKey="10">10</MenuItem>
-                                <MenuItem eventKey="11">11</MenuItem>
-                                <MenuItem eventKey="12">E1</MenuItem>
-                                <MenuItem eventKey="12">E2</MenuItem>
-                                <MenuItem eventKey="13">E3</MenuItem>
-                            </DropdownButton>
-                            <DropdownButton title="Period End">
-                                <MenuItem eventKey="1">1</MenuItem>
-                                <MenuItem eventKey="2">2</MenuItem>
-                                <MenuItem eventKey="3">3</MenuItem>
-                                <MenuItem eventKey="4">4</MenuItem>
-                                <MenuItem eventKey="5">5</MenuItem>
-                                <MenuItem eventKey="6">6</MenuItem>
-                                <MenuItem eventKey="7">7</MenuItem>
-                                <MenuItem eventKey="8">8</MenuItem>
-                                <MenuItem eventKey="9">9</MenuItem>
-                                <MenuItem eventKey="10">10</MenuItem>
-                                <MenuItem eventKey="11">11</MenuItem>
-                                <MenuItem eventKey="12">E1</MenuItem>
-                                <MenuItem eventKey="12">E2</MenuItem>
-                                <MenuItem eventKey="13">E3</MenuItem>
-                            </DropdownButton>
+                            Period Start: <select title="Period Start" id="periodStart">
+                                <option value="Undefined">--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">E1</option>
+                                <option value="12">E2</option>
+                                <option value="13">E3</option>
+                            </select>
+                            Period End: <select title="Period End" id="periodEnd">
+                                <option value="Undefined">--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">E1</option>
+                                <option value="12">E2</option>
+                                <option value="13">E3</option>
+                            </select>
                         </Tab>
                     </Tabs>
-                    <Button>Search</Button>
+                    <Button onClick={() => this.getSearchCriteria()}>Search</Button>
                 </div>
 
                 <div className="unmet-requirements">
