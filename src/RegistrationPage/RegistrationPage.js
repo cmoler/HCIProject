@@ -56,47 +56,64 @@ export class RegistrationPage extends Component {
 
 
     getSearchCriteria() {
-    //get DOM ID of every place they entered data and return it 
-    var searchCriteria = [];
-    
-    //program level
-    //department
-    if(typeof document.getElementById('courseNumber').value !== "undefined") {
-        searchCriteria.push(document.getElementById('courseNumber').value);
-    }
-    else {
-        searchCriteria.push(document.getElementById('courseNumber2').value);
-    }
+        //get DOM ID of every place they entered data and return it 
+        var searchCriteria = [];
+        
+        //program level
+        //department
+        if(typeof document.getElementById('courseNumber').value !== "undefined") {
+            searchCriteria.push(document.getElementById('courseNumber').value);
+        }
+        else if(typeof document.getElementById('courseNumber2').value !== "undefined"){
+            searchCriteria.push(document.getElementById('courseNumber2').value);
+        }
 
-    if(typeof document.getElementById('classNumber').value !== "undefined") {
-        searchCriteria.push(document.getElementById('classNumber').value);        
-    }
-    else {
-        searchCriteria.push(document.getElementById('classNumber2').value);        
-    }
+        if(typeof document.getElementById('classNumber').value !== "undefined") {
+            searchCriteria.push(document.getElementById('classNumber').value);        
+        }
+        else if(typeof document.getElementById('classNumber2').value !== "undefined"){
+            searchCriteria.push(document.getElementById('classNumber2').value);        
+        }
 
-    if(typeof document.getElementById('courseTitle').value !== "undefined") {
-        searchCriteria.push(document.getElementById('courseTitle').value);
-    }
-    else {
-        searchCriteria.push(document.getElementById('courseTitle2').value);
-    }
+        if(typeof document.getElementById('courseTitle').value !== "undefined") {
+            searchCriteria.push(document.getElementById('courseTitle').value);
+        }
+        else if(typeof document.getElementById('courseTitle')){
+            searchCriteria.push(document.getElementById('courseTitle2').value);
+        }
 
-    //levelmin
-    //level max
+        //levelmin
+        //level max
 
-    searchCriteria.push(document.getElementById('instructor').value);
-    searchCriteria.push(document.getElementById('credits').value);
+        searchCriteria.push(document.getElementById('instructor').value);
+        searchCriteria.push(document.getElementById('credits').value);
 
-    //class meeting
+        //class meeting
 
-    //POST REQUEST HERE
-    // var chosen = document.getElementById("program-level-dropdown");
-    // var strUser = chosen.options[chosen.selectedIndex].text;
-    // alert(strUser);
+        //POST REQUEST HERE
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myArr = JSON.parse(this.responseText);
+                var table = document.getElementById("searchResultTable");
+                for(var i = 0; i < myArr.length; i++) {
 
-    var chosen2 = document.getElementById("program-level-dropdown2").value;
-    alert(chosen2);
+                    var row = table.insertRow(i);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+
+                    cell1.innerHTML = myArr[i].Name;
+                    cell2.innerHTML = myArr[i].Credits;
+                    cell3.innerHTML = myArr[i].Rating;
+                    cell4.innerHTML = myArr[i].Professor;
+                }
+            }
+        };
+        var url = "https://intense-springs-54094.herokuapp.com/api/course_schedule?ProgramLevel=Undergraduate&InstructorLastName=Ruiz";
+        xmlhttp.open("POST", url, true);
+        xmlhttp.send();
 }
 
     render() {
@@ -384,7 +401,24 @@ export class RegistrationPage extends Component {
                     </ButtonToolbar>
                 </div>
 
+                <div className="searchResults" id="searchResults">
+                    <h3>Search Results</h3>
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Course</th>
+                                <th scope="col">Credits</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Professor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="searchResultTable">
+                        </tbody>
+                    </table>
+                </div>
+
                 <div className="schedule">
+                    <h3>Current Schedule</h3>
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>

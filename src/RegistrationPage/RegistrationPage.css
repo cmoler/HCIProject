@@ -26,6 +26,8 @@ h3 {
 	width: 80%;
 	position: relative;
 	margin: auto;
+	padding-top: 15px;
+
 }
 
 .tabClass {
@@ -86,4 +88,18 @@ h3 {
 .potential-classes {
 	position: relative;
 	width:100%;
+}
+
+.searchResults {
+	width: 80%;
+	position: relative;
+	margin: auto;
+	text-align: center;
+}
+
+.schedule {
+	width: 80%;
+	position: relative;
+	margin: auto;
+	text-align: center;
 }
