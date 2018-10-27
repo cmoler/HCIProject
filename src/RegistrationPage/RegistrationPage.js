@@ -111,7 +111,7 @@ export class RegistrationPage extends Component {
                 }
             }
         };
-        var url = "https://intense-springs-54094.herokuapp.com/api/course_schedule?ProgramLevel=Undergraduate&InstructorLastName=Ruiz";
+        var url = "https://intense-springs-54094.herokuapp.com/api/course_schedule?CourseNumber=COP3502";
         xmlhttp.open("POST", url, true);
         xmlhttp.send();
 }
