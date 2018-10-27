@@ -278,32 +278,40 @@ export class RegistrationPage extends Component {
                                         <tr>
                                             
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                <Button bsStyle="default" onClick={() =>{
+                                                    this.setState({ instructorsForCourseShow: true });
+                                                    this.setState({ courseSelected: "Human Computer Interaction"});
+                                                }}>
                                                     Human Computer Interaction
                                                 </Button>
                                             </td>
                                             <td>3</td>
                                             <td>10</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => 
-                                                        this.setState({ scoresPerClassModalShow: true })
-                                                        //setNewInstructor("J. Ruiz")
-                                                        //this.handleInstructorModal("J.Ruiz")
-                                                }>
+                                                <Button bsStyle="default" onClick={() => {
+                                                        this.setState({ scoresPerClassModalShow: true });
+                                                        this.setState({ instructorSelected: "J. Ruiz"});
+                                                }}>
                                                     J. Ruiz
                                                 </Button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                <Button bsStyle="default" onClick={() =>{
+                                                    this.setState({ instructorsForCourseShow: true });
+                                                    this.setState({ courseSelected: "Penetration Testing"});
+                                                }}>
                                                     Penetration Testing
                                                 </Button>
                                             </td>
                                             <td>3</td>
                                             <td>8.3</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ scoresPerClassModalShow: true })}>
+                                                <Button bsStyle="default" onClick={() => {
+                                                    this.setState({scoresPerClassModalShow: true});
+                                                    this.setState({ instructorSelected: "Wilson"});
+                                                }}>
                                                     Wilson
                                                 </Button>
                                             </td>
@@ -326,31 +334,40 @@ export class RegistrationPage extends Component {
                                         <tr>
                                             
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                <Button bsStyle="default" onClick={() =>{
+                                                    this.setState({ instructorsForCourseShow: true });
+                                                    this.setState({ courseSelected: "Human Computer Interaction"});
+                                                }}>
                                                     Human Computer Interaction
                                                 </Button>
                                             </td>
                                             <td>3</td>
                                             <td>10</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => 
-                                                        this.setState({ scoresPerClassModalShow: true })//,
-                                                        //this.handleInstructorModal("J.Ruiz")
-                                                }>
+                                                <Button bsStyle="default" onClick={() => {
+                                                    this.setState({ scoresPerClassModalShow: true });
+                                                    this.setState({ instructorSelected: "J. Ruiz"});
+                                                }}>
                                                     J. Ruiz
                                                 </Button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                <Button bsStyle="default" onClick={() =>{
+                                                    this.setState({ instructorsForCourseShow: true });
+                                                    this.setState({ courseSelected: "Penetration Testing"});
+                                                }}>
                                                     Penetration Testing
                                                 </Button>
                                             </td>
                                             <td>3</td>
                                             <td>8.3</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ scoresPerClassModalShow: true })}>
+                                                <Button bsStyle="default" onClick={() => {
+                                                    this.setState({scoresPerClassModalShow: true});
+                                                    this.setState({ instructorSelected: "Wilson"});
+                                                }}>
                                                     Wilson
                                                 </Button>
                                             </td>
@@ -372,31 +389,40 @@ export class RegistrationPage extends Component {
                                         <tr>
                                             
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                <Button bsStyle="default" onClick={() =>{
+                                                    this.setState({ instructorsForCourseShow: true });
+                                                    this.setState({ courseSelected: "Human Computer Interaction"});
+                                                }}>
                                                     Human Computer Interaction
                                                 </Button>
                                             </td>
                                             <td>3</td>
                                             <td>10</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => 
-                                                        this.setState({ scoresPerClassModalShow: true })//,
-                                                        //this.handleInstructorModal("J.Ruiz")
-                                                }>
+                                                <Button bsStyle="default" onClick={() => {
+                                                    this.setState({ scoresPerClassModalShow: true });
+                                                    this.setState({ instructorSelected: "J. Ruiz"});
+                                                }}>
                                                     J. Ruiz
                                                 </Button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ instructorsForCourseShow: true })}>
+                                                <Button bsStyle="default" onClick={() =>{
+                                                    this.setState({ instructorsForCourseShow: true });
+                                                    this.setState({ courseSelected: "Penetration Testing"});
+                                                }}>
                                                     Penetration Testing
                                                 </Button>
                                             </td>
                                             <td>3</td>
                                             <td>8.3</td>
                                             <td>
-                                                <Button bsStyle="default" onClick={() => this.setState({ scoresPerClassModalShow: true })}>
+                                                <Button bsStyle="default" onClick={() => {
+                                                    this.setState({scoresPerClassModalShow: true});
+                                                    this.setState({ instructorSelected: "Wilson"});
+                                                }}>
                                                     Wilson
                                                 </Button>
                                             </td>
