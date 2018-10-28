@@ -57,36 +57,50 @@ export class RegistrationPage extends Component {
 
     getSearchCriteria() {
         //get DOM ID of every place they entered data and return it 
-        var searchCriteria = [];
         
         //program level
+        var programLevelDropdown = document.getElementById('program-level-dropdown');
+        var programLevel = programLevelDropdown.options[programLevelDropdown.selectedIndex].value;
+        alert(programLevel);
+
         //department
+        var departmentDropdown = document.getElementById('department-dropdown');
+        var departmentLevel = departmentDropdown.options[departmentDropdown.selectedIndex].value;        
+
         if(typeof document.getElementById('courseNumber').value !== "undefined") {
-            searchCriteria.push(document.getElementById('courseNumber').value);
+            var courseNumber = document.getElementById('courseNumber').value;
         }
         else if(typeof document.getElementById('courseNumber2').value !== "undefined"){
-            searchCriteria.push(document.getElementById('courseNumber2').value);
+            var courseNumber = document.getElementById('courseNumber2').value;
         }
 
         if(typeof document.getElementById('classNumber').value !== "undefined") {
-            searchCriteria.push(document.getElementById('classNumber').value);        
+            var classNumber = document.getElementById('classNumber').value;     
         }
-        else if(typeof document.getElementById('classNumber2').value !== "undefined"){
-            searchCriteria.push(document.getElementById('classNumber2').value);        
+        else if(typeof document.getElementById('classNumber2').value !== "undefined"){   
+            var classNumber = document.getElementById('classNumber2').value;     
         }
 
         if(typeof document.getElementById('courseTitle').value !== "undefined") {
-            searchCriteria.push(document.getElementById('courseTitle').value);
+            var courseTitle = document.getElementById('courseTitle').value;
         }
-        else if(typeof document.getElementById('courseTitle')){
-            searchCriteria.push(document.getElementById('courseTitle2').value);
+        else if(typeof document.getElementById('courseTitle2')){
+            var courseTitle = document.getElementById('courseTitle2').value;
         }
 
         //levelmin
-        //level max
+        var minLevelDropdown = document.getElementById('level-min-dropdown');
+        var minLevel = minLevelDropdown.options[minLevelDropdown.selectedIndex].value;  
 
-        searchCriteria.push(document.getElementById('instructor').value);
-        searchCriteria.push(document.getElementById('credits').value);
+        //level max
+        var maxLevelDropdown = document.getElementById('level-max-dropdown');
+        var maxLevel = maxLevelDropdown.options[maxLevelDropdown.selectedIndex].value;
+
+        //instructor
+        var instructor = document.getElementById('instructor').value;
+
+        //credits
+        var credits = document.getElementById('credits').value;
 
         //class meeting
 
@@ -129,9 +143,16 @@ export class RegistrationPage extends Component {
         };
         var url = "https://intense-springs-54094.herokuapp.com/api/course_schedule";
         var data = JSON.stringify({
-            "CouseNumber": "COP3502"
+            "ProgramLevel": programLevel,
+            "Department": departmentLevel,
+            "CourseNumber": courseNumber,
+            "ClassNumber": classNumber,
+            "CourseTitle": courseTitle,
+            "LevelMinimum": minLevel,
+            "LevelMaximum": maxLevel,
+            "InstructorLastName": instructor,
+            "Credits": credits
         });
-
         
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
