@@ -22,8 +22,8 @@ export class RegistrationPage extends Component {
             scoresPerClassModalShow: false,
             instructorsForCourseShow: false,
             programLevel: "Undergraduate",
-            instructorSelected: "Jake Mellinger",
-            courseSelected: "Being Awesome 101"
+            instructorSelected: "Joshua Fox",
+            courseSelected: "COP3503"
         };
 
         this.interdisciplinary = [{

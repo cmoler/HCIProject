@@ -23,19 +23,6 @@ const options = {
     legend: "none"
 };
 
-const formatInstructorData = (response_data) => {
-    var output = [];
-    for (var i=0; i<response_data.length; i++) {
-        var row = new Array(["Instructor", "Score"]);
-        for (var j=0; j<response_data[i].length; j++) {
-            row.push(new Array(response_data[i][j].Name, response_data[i][j].Rating));
-        }
-        output.push(row)
-    }
-
-    return output;
-};
-
 export class InstructorsForCourseModal extends React.Component {
 
     constructor(props) {
@@ -46,8 +33,8 @@ export class InstructorsForCourseModal extends React.Component {
         };
     }
 
-    componentDidMount() {
-        //After setting default values, hit teacher evals endpoint to fill graph data
+    getInfo() {
+/*        //After setting default values, hit teacher evals endpoint to fill graph data
         //Happens in ComponentDidMount() because it is  an asychronous call
         axios.get(api_endpoint + '/course_evals?course=' + this.props.course.replace(/\s/g,','))
             .then(function (response) {
@@ -61,11 +48,37 @@ export class InstructorsForCourseModal extends React.Component {
                     console.log(error.response.status);
                     console.log(error.response.headers);
                 }
-            });
+            });*/
 
+        var xhr = new XMLHttpRequest(),
+            method = "GET",
+            url = api_endpoint + '/course_evals?course=' + this.props.course.replace(/\s/g,',');
+
+        let setInstructor = (output) => {
+            this.setState({ instructor_data: output });
+        };
+
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4 && xhr.status === 200) {
+                var myArr = JSON.parse(this.responseText);
+                if(myArr[0] != undefined) {
+                    var output = [
+                        ["Instructor", "Score"],
+                        [myArr[0].Name, myArr[0].Rating],
+                        [myArr[1].Name, myArr[1].Rating],
+                        [myArr[2].Name, myArr[2].Rating],
+                        [myArr[3].Name, myArr[3].Rating],
+                    ];
+                    setInstructor(output);
+                }
+            }
+        };
+        xhr.send();
     }
 
     render() {
+        this.getInfo();
         return (
             <Modal
                 {...this.props}
@@ -89,10 +102,14 @@ export class InstructorsForCourseModal extends React.Component {
                     <div class="second-column">
                         <h5>Top Instructors for this Course</h5>
                         <ListGroup>
-                            <ListGroupItem bsStyle="info"><Link to ={"/dash/" + this.state.instructor_data[1][0]}>1. {this.state.instructor_data[1][0]}</Link></ListGroupItem>
-                            <ListGroupItem bsStyle="info"><Link to ={"/dash/" + this.state.instructor_data[2][0]}>2. {this.state.instructor_data[2][0]}</Link></ListGroupItem>
-                            <ListGroupItem bsStyle="info"><Link to ={"/dash/" + this.state.instructor_data[3][0]}>3. {this.state.instructor_data[3][0]}</Link></ListGroupItem>
-                            <ListGroupItem bsStyle="info"><Link to ={"/dash/" + this.state.instructor_data[4][0]}>4. {this.state.instructor_data[4][0]}</Link></ListGroupItem>
+                            <ListGroupItem bsStyle="info"><Link
+                                to={"/dash/" + this.state.instructor_data[1][0]}>1. {this.state.instructor_data[1][0]}</Link></ListGroupItem>
+                            <ListGroupItem bsStyle="info"><Link
+                                to={"/dash/" + this.state.instructor_data[2][0]}>2. {this.state.instructor_data[2][0]}</Link></ListGroupItem>
+                            <ListGroupItem bsStyle="info"><Link
+                                to={"/dash/" + this.state.instructor_data[3][0]}>3. {this.state.instructor_data[3][0]}</Link></ListGroupItem>
+                            <ListGroupItem bsStyle="info"><Link
+                                to={"/dash/" + this.state.instructor_data[4][0]}>3. {this.state.instructor_data[4][0]}</Link></ListGroupItem>
                         </ListGroup>
                     </div>
                 </Modal.Body>
