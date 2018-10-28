@@ -122,6 +122,16 @@ export class RegistrationPage extends Component {
 
         //class meeting
 
+        let instructorButtonFunc = (name) => {
+            this.setState({ instructorsForCourseShow: true });
+            this.setState({ courseSelected: name });
+        };
+
+        let courseButtonFunc = (course) => {
+            this.setState({ scoresPerClassModalShow: true });
+            this.setState({ instructorSelected: course });
+        };
+
         //POST REQUEST HERE
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -140,17 +150,17 @@ export class RegistrationPage extends Component {
                     courseButton.type = "Button";
                     courseButton.value = myArr[i].Name;
                     courseButton.onclick = function() {
-                        this.setState({ instructorsForCourseShow: true });
-                        this.setState({ courseSelected: myArr[i].Name });
+                        instructorButtonFunc(this.value);
                     };
+                    courseButton.onclick.courseName = myArr[i].Name;
 
                     var instructorButton = document.createElement("input");
                     instructorButton.type = "Button";
                     instructorButton.value = myArr[i].Professor;
                     instructorButton.onclick = function() {
-                        this.setState({ scoresPerClassModalShow: true });
-                        this.setState({ instructorSelected: myArr[i].Name });
+                        courseButtonFunc(this.value);
                     };
+
 
                     cell1.appendChild(courseButton);
                     cell2.innerHTML = myArr[i].Credits;
