@@ -510,7 +510,7 @@ export class RegistrationPage extends Component {
                                 <th scope="col">Course</th>
                                 <th scope="col">Section</th>
                                 <th scope="col">Credits</th>
-                                <th scope="col">Rating</th>
+                                <th scope="col">Course Rating</th>
                                 <th scope="col">Professor</th>
                             </tr>
                         </thead>
