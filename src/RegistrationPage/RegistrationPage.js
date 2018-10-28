@@ -57,50 +57,68 @@ export class RegistrationPage extends Component {
 
     getSearchCriteria() {
         //get DOM ID of every place they entered data and return it 
+
+        var searchMap = new Map();
         
         //program level
         var programLevelDropdown = document.getElementById('program-level-dropdown');
         var programLevel = programLevelDropdown.options[programLevelDropdown.selectedIndex].value;
-        alert(programLevel);
+        searchMap["ProgramLevel"] = programLevel;
 
         //department
         var departmentDropdown = document.getElementById('department-dropdown');
-        var departmentLevel = departmentDropdown.options[departmentDropdown.selectedIndex].value;        
+        var departmentLevel = departmentDropdown.options[departmentDropdown.selectedIndex].value;
+        searchMap["Department"] = departmentLevel;
 
         if(typeof document.getElementById('courseNumber').value !== "undefined") {
             var courseNumber = document.getElementById('courseNumber').value;
+            //searchMap.set("CourseNumber": courseNumber);
+            searchMap["CourseNumber"] = courseNumber;
         }
         else if(typeof document.getElementById('courseNumber2').value !== "undefined"){
             var courseNumber = document.getElementById('courseNumber2').value;
+            searchMap["CourseNumber"] = courseNumber;
         }
 
         if(typeof document.getElementById('classNumber').value !== "undefined") {
-            var classNumber = document.getElementById('classNumber').value;     
+            var classNumber = document.getElementById('classNumber').value;  
+            searchMap["ClassNumber"] = classNumber;   
         }
         else if(typeof document.getElementById('classNumber2').value !== "undefined"){   
-            var classNumber = document.getElementById('classNumber2').value;     
+            var classNumber = document.getElementById('classNumber2').value; 
+            searchMap["ClassNumber"] = classNumber;    
         }
 
         if(typeof document.getElementById('courseTitle').value !== "undefined") {
             var courseTitle = document.getElementById('courseTitle').value;
+            searchMap["CourseTitle"] = courseTitle;
         }
         else if(typeof document.getElementById('courseTitle2')){
             var courseTitle = document.getElementById('courseTitle2').value;
+            searchMap["CourseTitle"] = courseTitle;
         }
 
         //levelmin
         var minLevelDropdown = document.getElementById('level-min-dropdown');
-        var minLevel = minLevelDropdown.options[minLevelDropdown.selectedIndex].value;  
+        var minLevel = minLevelDropdown.options[minLevelDropdown.selectedIndex].value;
+        searchMap["LevelMinimum"] = minLevel;  
 
         //level max
         var maxLevelDropdown = document.getElementById('level-max-dropdown');
         var maxLevel = maxLevelDropdown.options[maxLevelDropdown.selectedIndex].value;
+        searchMap["LevelMaximum"] = maxLevel; 
 
         //instructor
         var instructor = document.getElementById('instructor').value;
+        if(typeof instructor !== "undefined") {
+            searchMap["InstructorLastName"] = instructor; 
+        }
 
         //credits
         var credits = document.getElementById('credits').value;
+        if(typeof credits !== "undefined") {
+            searchMap["Credits"] = credits; 
+        }
 
         //class meeting
 
@@ -153,10 +171,12 @@ export class RegistrationPage extends Component {
             "InstructorLastName": instructor,
             "Credits": credits
         });
-        
+
+        var newData = JSON.stringify(searchMap);
+
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(data);
+        xmlhttp.send(newData);
     }
 
     render() {
@@ -184,18 +204,18 @@ export class RegistrationPage extends Component {
                             <div className="filter-options">
                                 <ButtonToolbar>
                                     Program Level: <select title="Program level" id="program-level-dropdown">
-                                        <option value="Undefined">--</option>
+                                        <option value="">--</option>
                                         <option value="Undergraduate">Undergraduate</option>
                                         <option value="Graduate">Graduate</option>
                                     </select>
                                     Program: <select title="Program" id="program-dropdown">
-                                        <option value="Undefined">--</option>
+                                        <option value="">--</option>
                                         <option value="Campus">Campus</option>
                                         <option value="Online">Online</option>
                                         <option value="Innovation Academy">Innovation Academy</option>
                                     </select>
                                     Department: <select title="Department" id="department-dropdown">
-                                        <option value="Undefined">--</option>
+                                        <option value="">--</option>
                                         <option value="Computer & Information Science & Engineering">Computer & Information Science & Engineering</option>
                                         <option eventKey="Electrical Engineering">Electrical Engineering</option>
                                     </select>
@@ -215,7 +235,7 @@ export class RegistrationPage extends Component {
                             </ButtonToolbar>
                             <ButtonToolbar>
                                 Minimum Level: <select title="Level Minimum" id="level-min-dropdown">
-                                    <option value="Undefined">--</option>
+                                    <option value="">--</option>
                                     <option value="1000">1000</option>
                                     <option value="2000">2000</option>
                                     <option value="3000">3000</option>
@@ -226,7 +246,7 @@ export class RegistrationPage extends Component {
                                     <option value="8000">8000</option>
                                 </select>
                                 Maximum Level: <select title="Level Maximum" id="level-max-dropdown">
-                                    <option value="Undefined">--</option>
+                                    <option value="">--</option>
                                     <option value="1999">1999</option>
                                     <option value="2999">2999</option>
                                     <option value="3999">3999</option>
