@@ -663,23 +663,7 @@ export class RegistrationPage extends Component {
                         </tbody>
                     </table>
                 </div>
-
-                <ButtonToolbar>
-                    <Button
-                        bsStyle="default"
-                        onClick={() => this.setState({ scoresPerClassModalShow: true })}
-                    >
-                        Scores Per Class Modal
-                    </Button>
-                    <Button
-                        bsStyle="default"
-                        onClick={() => this.setState({ instructorsForCourseShow: true })}
-                    >
-                        Instructors For Class Modal
-                    </Button>
-                    <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} />
-                    <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} />
-                </ButtonToolbar>
+                
                 <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} instructor={this.state.instructorSelected}/>
                 <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} course={this.state.courseSelected} />
             </div>
