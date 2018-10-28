@@ -346,19 +346,19 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Human Computer Interaction"});
+                                                    this.setState({ courseSelected: "Elem. Diff Equations"});
                                                 }}>
-                                                    Human Computer Interaction
+                                                    Elem. Diff Equations
                                                 </Button>
                                             </td>
                                             <td>3</td>
-                                            <td>10</td>
+                                            <td>4.5</td>
                                             <td>
                                                 <Button bsStyle="default" onClick={() => {
                                                         this.setState({ scoresPerClassModalShow: true });
-                                                        this.setState({ instructorSelected: "J. Ruiz"});
+                                                        this.setState({ instructorSelected: "M. Harris"});
                                                 }}>
-                                                    J. Ruiz
+                                                    M. Harris
                                                 </Button>
                                             </td>
                                         </tr>
@@ -366,19 +366,19 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Penetration Testing"});
+                                                    this.setState({ courseSelected: "Sets and Logic"});
                                                 }}>
-                                                    Penetration Testing
+                                                    Sets and Logic
                                                 </Button>
                                             </td>
                                             <td>3</td>
-                                            <td>8.3</td>
+                                            <td>6.4</td>
                                             <td>
                                                 <Button bsStyle="default" onClick={() => {
                                                     this.setState({scoresPerClassModalShow: true});
-                                                    this.setState({ instructorSelected: "Wilson"});
+                                                    this.setState({ instructorSelected: "C. Calvert"});
                                                 }}>
-                                                    Wilson
+                                                    C. Calvert
                                                 </Button>
                                             </td>
                                         </tr>
@@ -457,19 +457,19 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Human Computer Interaction"});
+                                                    this.setState({ courseSelected: "Geography of a Changing World"});
                                                 }}>
-                                                    Human Computer Interaction
+                                                    Geography of a Changing World
                                                 </Button>
                                             </td>
                                             <td>3</td>
-                                            <td>10</td>
+                                            <td>8.2</td>
                                             <td>
                                                 <Button bsStyle="default" onClick={() => {
                                                     this.setState({ scoresPerClassModalShow: true });
                                                     this.setState({ instructorSelected: "J. Ruiz"});
                                                 }}>
-                                                    J. Ruiz
+                                                    M. Uman
                                                 </Button>
                                             </td>
                                         </tr>
@@ -477,19 +477,19 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Penetration Testing"});
+                                                    this.setState({ courseSelected: "Social Geography"});
                                                 }}>
-                                                    Penetration Testing
+                                                    Social Geography
                                                 </Button>
                                             </td>
                                             <td>3</td>
-                                            <td>8.3</td>
+                                            <td>9.7</td>
                                             <td>
                                                 <Button bsStyle="default" onClick={() => {
                                                     this.setState({scoresPerClassModalShow: true});
-                                                    this.setState({ instructorSelected: "Wilson"});
+                                                    this.setState({ instructorSelected: "S. Gillespie"});
                                                 }}>
-                                                    Wilson
+                                                    S. Gillespie
                                                 </Button>
                                             </td>
                                         </tr>
