@@ -110,7 +110,7 @@ export class RegistrationPage extends Component {
                     courseButton.onclick = function() {
                         this.setState({ instructorsForCourseShow: true });
                         this.setState({ courseSelected: myArr[i].Name });
-                    }.bind(this);
+                    };
 
                     var instructorButton = document.createElement("input");
                     instructorButton.type = "Button";
@@ -118,7 +118,7 @@ export class RegistrationPage extends Component {
                     instructorButton.onclick = function() {
                         this.setState({ scoresPerClassModalShow: true });
                         this.setState({ instructorSelected: myArr[i].Name });
-                    }.bind(this);
+                    };
 
                     cell1.appendChild(courseButton);
                     cell2.innerHTML = myArr[i].Credits;
