@@ -3,6 +3,9 @@ import './ScoresPerClassModal.css'
 import Button from "react-bootstrap/es/Button";
 import {Modal} from "react-bootstrap";
 import Chart from "react-google-charts";
+import axios from "axios";
+
+const api_endpoint = "http://localhost:8080/api";
 
 const thisClassData = [
   ["Semester", "Score"],
@@ -34,7 +37,66 @@ const overallClassOptions = {
     legend: "none"
 };
 
+const formatOverallCourseData = (response_data) => {
+    var output = [];
+    for (var i=1; i<2; i++) {
+        var row = new Array(["Semester", "Score"]);
+        for (var j=0; j<response_data[i].length; j++) {
+            row.push(new Array(response_data[i][j].Term, response_data[i][j].Rating));
+        }
+        output.push(row)
+    }
+
+    return output;
+};
+
+const formatCourseData = (response_data) => {
+    var output = [];
+    for (var i=2; i<3; i++) {
+        var row = new Array(["Semester", "Score"]);
+        for (var j=0; j<response_data[i].length; j++) {
+            row.push(new Array(response_data[i][j].Term, response_data[i][j].Rating));
+        }
+        output.push(row)
+    }
+
+    return output;
+};
+
 export class ScoresPerClassModal extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            coverallCourseData: overallClassData,
+            courseData: thisClassData
+        };
+    }
+
+    componentDidMount() {
+        //After setting default values, hit teacher evals endpoint to fill graph data
+        //Happens in ComponentDidMount() because it is  an asychronous call
+        axios.get(api_endpoint + '/teacher_evals?name=' + this.props.instructor.replace(/\s/g,','))
+            .then(function (response) {
+                this.setState((state) => ({
+                    coverallCourseData: formatOverallCourseData(response.data.OverallEvals),
+                    courseData: formatCourseData(response.data.OverallEvals),
+
+                }))
+
+
+            }.bind(this))
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });
+
+    }
+
     render() {
         return (
             <Modal

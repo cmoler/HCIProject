@@ -62,7 +62,7 @@ const formatInstructorData = (response_data) => {
     }
 
     return output;
-}
+};
 
 const formatCourseOptions = (response) => {
     var output = new Array(["All Courses"]);
@@ -72,7 +72,7 @@ const formatCourseOptions = (response) => {
     }
     return output;
 
-}
+};
 
 export class DashboardPage extends Component {
 
