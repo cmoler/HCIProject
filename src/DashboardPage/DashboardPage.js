@@ -34,7 +34,7 @@ const DefaultNotableFeedback = [
     "He's a good teacher -COP3502 F17",
     "He made me like programming -CEN3031 S18",
     "Best class ever -COP3503 F18",
-    "This is some gosh darn feedback -MAC2301 F11",
+    "This is some feedback -MAC2301 F11",
     "This is feedback as well -COP3502 F17",
 ];
 
@@ -64,7 +64,6 @@ var DefaultInstructorData = [
 
 const formatInstructorData = (response_data) => {
     var output = [];
-    console.log(response_data)
     for (var i=0; i<response_data.length; i++) {
         var row = new Array(["Semester", "Score"]);
         for (var j=0; j<response_data[i].length; j++) {
@@ -73,7 +72,6 @@ const formatInstructorData = (response_data) => {
         output.push(row)
     }
 
-    console.log(output);
     return output;
 }
 
@@ -111,7 +109,6 @@ export class DashboardPage extends Component {
         //After setting default values, hit teacher evals endpoint to fill graph data
         axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,','))
             .then(function (response) {
-                console.log(response.data);
                 this.setState((state) => ({
                     bio: response.data.Bio,
                     notableFeedback: response.data.Feedback,
@@ -141,7 +138,6 @@ export class DashboardPage extends Component {
         } else {
             axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,',') + '&course=' + this.state.courseOptions[key])
             .then(function (response) {
-                console.log(response.data)
                 this.setState({instructor_data: formatInstructorData(response.data)})
             }.bind(this))
             .catch(function (error) {
