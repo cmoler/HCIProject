@@ -63,15 +63,14 @@ var DefaultInstructorData = [
 ];
 
 const formatInstructorData = (response_data) => {
-    if (!response_data) {
-        console.log("NO instructor_data")
-    }
-    var output = new Array([]);
+    var output = [];
+    console.log(response_data)
     for (var i=0; i<response_data.length; i++) {
         var row = new Array(["Semester", "Score"]);
         for (var j=0; j<response_data[i].length; j++) {
-            row.push(new Array([response_data[i].Term, response_data[i].Rating]));
+            row.push(new Array(response_data[i][j].Term, response_data[i][j].Rating));
         }
+        output.push(row)
     }
 
     console.log(output);
@@ -80,7 +79,11 @@ const formatInstructorData = (response_data) => {
 
 const formatCourseOptions = (response) => {
     var output = new Array(["All Courses"]);
-    return output.push.apply(output, response);
+
+    for (var i=0; i<6; i++) {
+        output.push(response[i]);
+    }
+    return output;
 
 }
 
@@ -108,12 +111,13 @@ export class DashboardPage extends Component {
         //After setting default values, hit teacher evals endpoint to fill graph data
         axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,','))
             .then(function (response) {
+                console.log(response.data);
                 this.setState((state) => ({
-                    bio: response.Bio,
-                    notableFeedback: response.Feedback,
-                    courseOptions: formatCourseOptions(response.Courses),
-                    instructor_data: formatInstructorData(response.OverallEvals),
-                    overall_instructor_data: formatInstructorData(response.OverallEvals)
+                    bio: response.data.Bio,
+                    notableFeedback: response.data.Feedback,
+                    courseOptions: formatCourseOptions(response.data.Courses),
+                    instructor_data: formatInstructorData(response.data.OverallEvals),
+                    overall_instructor_data: formatInstructorData(response.data.OverallEvals)
                 }))
 
                 
@@ -137,7 +141,7 @@ export class DashboardPage extends Component {
         } else {
             axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,',') + '&course=' + this.state.courseOptions[key])
             .then(function (response) {
-                this.setState({instructor_data: formatInstructorData(response.OverallEvals)})
+                this.setState({instructor_data: formatInstructorData(response.data.OverallEvals)})
             }.bind(this))
             .catch(function (error) {
                 console.log(error);
