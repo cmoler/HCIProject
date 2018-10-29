@@ -130,7 +130,8 @@ export class DashboardPage extends Component {
         } else {
             axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,',') + '&course=' + this.state.courseOptions[key])
             .then(function (response) {
-                this.setState({instructor_data: formatInstructorData(response.data.OverallEvals)})
+                console.log(response.data)
+                this.setState({instructor_data: formatInstructorData(response.data)})
             }.bind(this))
             .catch(function (error) {
                 console.log(error);
