@@ -107,6 +107,7 @@ export class DashboardPage extends Component {
 
     componentDidMount() {
         //After setting default values, hit teacher evals endpoint to fill graph data
+        //Happens in ComponentDidMount() because it is  an asychronous call
         axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,','))
             .then(function (response) {
                 this.setState((state) => ({
