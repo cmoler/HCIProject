@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 import {Button, Tab, Tabs, ToggleButton, ToggleButtonGroup, Well} from "react-bootstrap";
 import Chart from "react-google-charts";
 import {Link} from "react-router-dom";
+import axios from 'axios'
+
+const api_endpoint = "http://localhost:8080/api";
 
 const RadioOptions = [
     "Overall Assessment",
@@ -19,7 +22,7 @@ const RadioOptions = [
 
 const DefaultCourseOptions = [
     "All Courses",
-    "COP3502",
+    "COP3503",
     "CEN3031",
     "EEL4390",
     "CNT4007C",
@@ -33,11 +36,11 @@ const DefaultNotableFeedback = [
     "Best class ever -COP3503 F18",
     "This is some gosh darn feedback -MAC2301 F11",
     "This is feedback as well -COP3502 F17",
-]
+];
 
-const DefaultBio = "He is a teacher who likes stuff"
+const DefaultBio = "He is a teacher who likes stuff";
 
-var DefaultInstructorData = [
+const DefaultInstructorData = [
     [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 4], ["F18", 5]],
     [["Semester", "Score"], ["F17", 1.2],["S18", 1.4],["SU18", .8], ["F18", 4]],
     [["Semester", "Score"], ["F17", 2.4],["S18", 2.4],["SU18", 2.4], ["F18", 1]],
@@ -46,7 +49,29 @@ var DefaultInstructorData = [
     [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 3], ["F18", 2]],
     [["Semester", "Score"], ["F17", 1.7],["S18", 1.7],["SU18", 2.4], ["F18", 3.2]],
     [["Semester", "Score"], ["F17", 5],["S18", 4],["SU18", 4], ["F18", 5]]
-]
+];
+
+const formatInstructorData = (response_data) => {
+    if (!response_data) {
+        console.log("NO instructor_data")
+    }
+    var output = new Array([]);
+    for (var i=0; i<response_data.length; i++) {
+        var row = new Array(["Semester", "Score"]);
+        for (var j=0; j<response_data[i].length; j++) {
+            row.push(new Array([response_data[i].Term, response_data[i].Rating]));
+        }
+    }
+
+    console.log(output);
+    return output;
+}
+
+const formatCourseOptions = (response) => {
+    var output = new Array(["All Courses"]);
+    return output.push.apply(output, response);
+
+}
 
 export class DashboardPage extends Component {
 
@@ -55,20 +80,58 @@ export class DashboardPage extends Component {
 
         this.handleSelect = this.handleSelect.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
+        this.teacherName = props.match.params.teacher;
         this.state = {
             key: 0,
             radio: 0,
             courseOptions: DefaultCourseOptions,
             notableFeedback: DefaultNotableFeedback,
             bio: DefaultBio,
-            instructor_data: DefaultInstructorData
+            instructor_data: DefaultInstructorData,
+            overall_instructor_data: DefaultInstructorData
         };
-        this.teacherName = props.match.params.teacher;
+
+    }
+
+    componentDidMount() {
+        //After setting default values, hit teacher evals endpoint to fill graph data
+        axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,','))
+            .then(function (response) {
+                this.setState((state) => ({
+                    bio: response.Bio,
+                    notableFeedback: response.Feedback,
+                    courseOptions: formatCourseOptions(response.Courses),
+                    instructor_data: formatInstructorData(response.OverallEvals),
+                    overall_instructor_data: formatInstructorData(response.OverallEvals)
+                }))
+
+                
+            }.bind(this))
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            }); 
+
     }
 
     handleSelect(key) {
         this.setState({key:key, radio:this.state.radio});
+        // If key is 0(Course selection is "All Courses"), used cached overall data
+        if (!key) {
+            this.setState({instructor_data: this.state.overall_instructor_data});
+        //Otherwise hit evals endpoint with teacher name and course
+        } else {
+            axios.get(api_endpoint + '/teacher_evals?name=' + this.teacherName.replace(/\s/g,',') + '&course=' + this.state.courseOptions[key])
+            .then(function (response) {
+                this.setState({instructor_data: formatInstructorData(response.OverallEvals)})
+            }.bind(this))
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 
     handleChange(key) {
@@ -109,7 +172,7 @@ export class DashboardPage extends Component {
                             >
                             {
                                 this.state.courseOptions.map(function(value, i) {
-                                    return <Tab eventKey={i} title={value}/>
+                                    return <Tab Key={value.id} eventKey={i} title={value}/>
                                 })
                             }
                         </Tabs>
