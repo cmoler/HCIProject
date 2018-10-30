@@ -49,17 +49,6 @@ const DefaultInstructorData = [
     [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 3], ["F18", 2]],
     [["Semester", "Score"], ["F17", 1.7],["S18", 1.7],["SU18", 2.4], ["F18", 3.2]],
     [["Semester", "Score"], ["F17", 5],["S18", 4],["SU18", 4], ["F18", 5]]
-]
-
-var DefaultInstructorData = [
-    [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 4], ["F18", 5]],
-    [["Semester", "Score"], ["F17", 1.2],["S18", 1.4],["SU18", .8], ["F18", 4]],
-    [["Semester", "Score"], ["F17", 2.4],["S18", 2.4],["SU18", 2.4], ["F18", 1]],
-    [["Semester", "Score"], ["F17", 4.2],["S18", 1],["SU18", 2], ["F18", 1]],
-    [["Semester", "Score"], ["F17", 4.4],["S18", 3.3],["SU18", 2.2], ["F18", 1.1]],
-    [["Semester", "Score"], ["F17", 2],["S18", 3],["SU18", 3], ["F18", 2]],
-    [["Semester", "Score"], ["F17", 1.7],["S18", 1.7],["SU18", 2.4], ["F18", 3.2]],
-    [["Semester", "Score"], ["F17", 5],["S18", 4],["SU18", 4], ["F18", 5]]
 ];
 
 const formatInstructorData = (response_data) => {
