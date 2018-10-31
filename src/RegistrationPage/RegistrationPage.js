@@ -149,7 +149,8 @@ export class RegistrationPage extends Component {
 
                     var courseButton = document.createElement("input");
                     courseButton.type = "Button";
-                    courseButton.value = myArr[i].Name;
+                    courseButton.value = myArr[i].Code;
+                    console.log(myArr[i].Code)
                     courseButton.onclick = function() {
                         instructorButtonFunc(this.value);
                     };
@@ -164,7 +165,7 @@ export class RegistrationPage extends Component {
 
 
                     cell1.appendChild(courseButton);
-                    cell5.innerHTML = myArr[i].Section;
+                    cell5.innerHTML = myArr[i].Name;
                     cell2.innerHTML = myArr[i].Credits;
                     cell3.innerHTML = myArr[i].Rating;
                     cell4.appendChild(instructorButton);
@@ -348,7 +349,7 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Elem. Diff Equations"});
+                                                    this.setState({ courseSelected: "CHM2045"});
                                                 }}>
                                                     Elem. Diff Equations
                                                 </Button>
@@ -368,7 +369,7 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Sets and Logic"});
+                                                    this.setState({ courseSelected: "MHF3202"});
                                                 }}>
                                                     Sets and Logic
                                                 </Button>
@@ -404,7 +405,7 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Human Computer Interaction"});
+                                                    this.setState({ courseSelected: "CIS4914"});
                                                 }}>
                                                     Human Computer Interaction
                                                 </Button>
@@ -414,29 +415,9 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() => {
                                                     this.setState({ scoresPerClassModalShow: true });
-                                                    this.setState({ instructorSelected: "J. Ruiz"});
+                                                    this.setState({ instructorSelected: "Jaime Ruiz"});
                                                 }}>
-                                                    J. Ruiz
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <Button bsStyle="default" onClick={() =>{
-                                                    this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Penetration Testing"});
-                                                }}>
-                                                    Penetration Testing
-                                                </Button>
-                                            </td>
-                                            <td>3</td>
-                                            <td>8.3</td>
-                                            <td>
-                                                <Button bsStyle="default" onClick={() => {
-                                                    this.setState({scoresPerClassModalShow: true});
-                                                    this.setState({ instructorSelected: "Wilson"});
-                                                }}>
-                                                    Wilson
+                                                    Jaime Ruiz
                                                 </Button>
                                             </td>
                                         </tr>
@@ -455,31 +436,10 @@ export class RegistrationPage extends Component {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            
                                             <td>
                                                 <Button bsStyle="default" onClick={() =>{
                                                     this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Geography of a Changing World"});
-                                                }}>
-                                                    Geography of a Changing World
-                                                </Button>
-                                            </td>
-                                            <td>3</td>
-                                            <td>8.2</td>
-                                            <td>
-                                                <Button bsStyle="default" onClick={() => {
-                                                    this.setState({ scoresPerClassModalShow: true });
-                                                    this.setState({ instructorSelected: "J. Ruiz"});
-                                                }}>
-                                                    M. Uman
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <Button bsStyle="default" onClick={() =>{
-                                                    this.setState({ instructorsForCourseShow: true });
-                                                    this.setState({ courseSelected: "Social Geography"});
+                                                    this.setState({ courseSelected: "GEO2410"});
                                                 }}>
                                                     Social Geography
                                                 </Button>
@@ -489,9 +449,9 @@ export class RegistrationPage extends Component {
                                             <td>
                                                 <Button bsStyle="default" onClick={() => {
                                                     this.setState({scoresPerClassModalShow: true});
-                                                    this.setState({ instructorSelected: "S. Gillespie"});
+                                                    this.setState({ instructorSelected: "Jonathan Welker"});
                                                 }}>
-                                                    S. Gillespie
+                                                    Jonathan Welker
                                                 </Button>
                                             </td>
                                         </tr>
@@ -508,7 +468,7 @@ export class RegistrationPage extends Component {
                         <thead>
                             <tr>
                                 <th scope="col">Course</th>
-                                <th scope="col">Section</th>
+                                <th scope="col">Title</th>
                                 <th scope="col">Credits</th>
                                 <th scope="col">Course Rating</th>
                                 <th scope="col">Professor</th>
