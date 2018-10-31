@@ -192,9 +192,14 @@ export class RegistrationPage extends Component {
         xmlhttp.send(newData);
     }
 
+
+
+
     render() {
         let scoresPerClassClose = () => this.setState({ scoresPerClassModalShow: false });
         let instructorsForCourseClose = () => this.setState ({ instructorsForCourseShow: false});
+        let refreshInstructorModal = () => this.setState({refreshInstructor: !this.state.refreshInstructor})
+        let refreshScoresModal = () => this.setState({refreshInstructor: !this.state.refreshInstructor})
         const selectRow ={
             mode: 'radio',
             onSelect: this.handleSelectRow
@@ -627,8 +632,15 @@ export class RegistrationPage extends Component {
                     </table>
                 </div>
                 
-                <ScoresPerClassModal show={this.state.scoresPerClassModalShow} onHide={scoresPerClassClose} instructor={this.state.instructorSelected}/>
-                <InstructorsForCourseModal show={this.state.instructorsForCourseShow} onHide={instructorsForCourseClose} course={this.state.courseSelected} />
+                <ScoresPerClassModal show={this.state.scoresPerClassModalShow} 
+                                     onHide={scoresPerClassClose} 
+                                     instructor={this.state.instructorSelected}
+                                     course={this.state.courseSelected}
+                                     refresh={refreshScoresModal}/>
+                <InstructorsForCourseModal show={this.state.instructorsForCourseShow} 
+                                           onHide={instructorsForCourseClose} 
+                                           course={this.state.courseSelected}
+                                           refresh={refreshInstructorModal} />
             </div>
         );
     }

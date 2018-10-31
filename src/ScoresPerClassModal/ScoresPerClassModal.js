@@ -69,32 +69,73 @@ export class ScoresPerClassModal extends React.Component {
         super(props);
 
         this.state = {
-            coverallCourseData: overallClassData,
+            overallCourseData: overallClassData,
             courseData: thisClassData
         };
     }
+    
+    getInfo() {
+        var request1 = new XMLHttpRequest(),
+            method = "GET",
+            url = api_endpoint + '/teacher_evals?name=' + this.props.instructor.replace(/\s/g,',');
 
-    componentDidMount() {
-        //After setting default values, hit teacher evals endpoint to fill graph data
-        //Happens in ComponentDidMount() because it is  an asychronous call
-        axios.get(api_endpoint + '/teacher_evals?name=' + this.props.instructor.replace(/\s/g,','))
-            .then(function (response) {
-                this.setState((state) => ({
-                    coverallCourseData: formatOverallCourseData(response.data.OverallEvals),
-                    courseData: formatCourseData(response.data.OverallEvals),
+        let setCourseData = (output) => {
+            this.setState({ courseData: output });
+        };
 
-                }))
-
-
-            }.bind(this))
-            .catch(function (error) {
-                if (error.response) {
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
+        request1.open(method, url, true);
+        request1.onreadystatechange = function () {
+            if(request1.readyState === 4 && request1.status === 200) {
+                var myArr = JSON.parse(this.responseText);
+                if(myArr[0] != undefined) {
+                    var output = [
+                        ["Semester", "Score"],
+                        [myArr[0].Term, myArr[0].Rating],
+                        [myArr[1].Term, myArr[1].Rating],
+                        [myArr[2].Term, myArr[2].Rating],
+                        [myArr[3].Term, myArr[3].Rating],
+                    ];
+                    setCourseData(output);
                 }
-            });
+            }
+        };
+        request1.send();
 
+
+        var request2 = new XMLHttpRequest(),
+            method = "GET",
+            url = api_endpoint + '/teacher_evals?name=' + this.props.instructor.replace(/\s/g,',') + '&course=' + this.props.course;
+
+        let setOverallData = (output) => {
+            this.setState({ overallClassData: output });
+        };
+
+        request2.open(method, url, true);
+        request2.onreadystatechange = function () {
+            if(request2.readyState === 4 && request2.status === 200) {
+                var myArr = JSON.parse(this.responseText);
+                if(myArr[0] != undefined) {
+                    var output = [
+                        ["Semester", "Score"],
+                        [myArr[0].Term, myArr[0].Rating],
+                        [myArr[1].Term, myArr[1].Rating],
+                        [myArr[2].Term, myArr[2].Rating],
+                        [myArr[3].Term, myArr[3].Rating],
+                    ];
+                    setOverallData(output);
+                }
+            }
+        };
+        request2.send();
+
+
+    }
+
+    componentWillReceiveProps(props) {
+      const { show, onHide, course, refresh } = this.props;
+      if (props.refresh !== refresh) {
+        this.getInfo()
+      }
     }
 
     render() {

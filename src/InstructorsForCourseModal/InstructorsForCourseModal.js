@@ -20,7 +20,12 @@ const options = {
     title: "Overall Course Evals",
     hAxis: {title: "Professor", viewWindow: {min: 0, max: 4}},
     vAxis: {title: "Score", viewWindow: {min: 0, max: 5}},
-    legend: "none"
+    legend: "none",
+    animation: {
+                duration: 500,
+                easing: 'out',
+                startup: true,
+              }
 };
 
 export class InstructorsForCourseModal extends React.Component {
@@ -30,26 +35,11 @@ export class InstructorsForCourseModal extends React.Component {
 
         this.state = {
             instructor_data: data,
+            request: true
         };
     }
 
     getInfo() {
-/*        //After setting default values, hit teacher evals endpoint to fill graph data
-        //Happens in ComponentDidMount() because it is  an asychronous call
-        axios.get(api_endpoint + '/course_evals?course=' + this.props.course.replace(/\s/g,','))
-            .then(function (response) {
-                this.setState((state) => ({
-                    instructor_data: formatInstructorData(response.data),
-                }))
-            }.bind(this))
-            .catch(function (error) {
-                if (error.response) {
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                }
-            });*/
-
         var xhr = new XMLHttpRequest(),
             method = "GET",
             url = api_endpoint + '/course_evals?course=' + this.props.course.replace(/\s/g,',');
@@ -77,8 +67,18 @@ export class InstructorsForCourseModal extends React.Component {
         xhr.send();
     }
 
+    componentWillReceiveProps(props) {
+      const { show, onHide, course, refresh } = this.props;
+      if (props.refresh !== refresh) {
+        this.getInfo()
+      }
+    }
+
     render() {
-        this.getInfo();
+        // if (this.props.show && this.state.request) {
+        //     this.getInfo();   
+        //     this.state.request = false;     
+        // }
         return (
             <Modal
                 {...this.props}
