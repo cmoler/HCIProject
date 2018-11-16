@@ -4,6 +4,7 @@ import Button from "react-bootstrap/es/Button";
 import {Modal} from "react-bootstrap";
 import Chart from "react-google-charts";
 import axios from "axios";
+import Redirect from "react-router/es/Redirect";
 
 const api_endpoint = "http://localhost:8080/api";
 
@@ -139,6 +140,10 @@ export class ScoresPerClassModal extends React.Component {
     }
 
     render() {
+        if(this.props.show) {
+            return <Redirect to={"/dash/" + this.props.instructor.replace(/\s/g,',')}/>
+        }
+
         return (
             <Modal
                 {...this.props}
